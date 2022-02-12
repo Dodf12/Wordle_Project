@@ -26,24 +26,74 @@
 #      5: # 0
 #      6: # 0
 #=============
-from tkinter.font import names
-from unicodedata import name
 from player import Player
 
 # TODO - make WordlePlayer
-class WorldPlayer(Player):
-    de
+class WordlePlayer(Player):
     def __init__(self, name, maxTry):
         self.name = name
-        self.maxTry = maxTry
-        self.GamesPlayed = 0
-        self.WinPercentage = 0.0
-    def updateStats(self, won, tries):
+        self.maxTry = maxTry #maximum amt of tries p/game
+        self.gamesplayed = 0 #total games played
+        self.winpercent = 0.0 
+        self.winstreak = 0 #current win streak
+        self.maxstreak = 0 #highest amount of wins in a row ever
+        self.wins = 0 #variable for number of times one
+        self.total_tries = 0 #varaible for total tries attemtped by player through
+        self.current_tries = [] #Tracks tries in game being played currently by the player and stores in list
 
-    def winPercentage(self):
-        
+    def updateStats(self, won, tries): #updates the amount of tries
+        if won:
+            self.total_tries = tries + 1
+            self.wins = tries + 1
+            self.current_tries = [tries]
+        elif won == False:
+            self.total_tries = tries + 1
+            self.winstreak = 0
+            
+    
+    def winPercent(self):
+        self.winpercent = float(self.wins / self.total_tries) * 100
+        return self.winpercent
     def gamesPlayed(self):
+        return self.total_tries
     def currentStreak(self):
+        return self.winstreak
     def maxStreak(self):
+        return self.maxstreak
+    
+    def guessDist(self): #prints guess distribution stats
+        #These variables keeep track of how
+
+        one_try = 0 
+        two_try = 0
+        three_try = 0
+        four_try = 0
+        five_try = 0
+        six_try = 0
+        for idx in range(len(self.current_tries)):           
+            if self.current_tries[idx] == 1:
+                one_try = one_try + 1
+            elif self.current_tries[idx] == 2:
+                two_try = two_try +  1
+            elif self.current_tries[idx] == 3:
+                three_try = three_try + 1
+            elif self.current_tries[idx] == 4:
+                four_try = four_try + 1
+            elif self.current_tries[idx] == 5:
+                five_try = five_try + 1
+            elif self.current_tries[idx] == 6:
+                six_try = six_try + 1
+
+        
+
+
+
+
+
     def displayStats(self):
+        print("Games Played: " + self.gamesplayed)
+        print("Win %: " + self.winpercent + "%")
+        print("Current Streak: " + self.winstreak)
+        print("Guess Distrubution"
+
         
