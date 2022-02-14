@@ -11,7 +11,15 @@ from wordleplayer import WordlePlayer
 #   alphabet - WordleWord of the letters a-z that have been marked
 #======
 def markGuess(word, guess, alphabet):
-    pass  # TODO
+    for idx in len(range(guess)): #marks character green
+        if guess[idx] == word[idx]:
+            guess.setCorrect()
+    for idx in len(range(guess)): #trying to see if character of guess is not in word
+            if guess[idx]!=word[0] and guess[idx]!=word[1] and guess[idx]!=word[2] and guess[idx!=word[3] and guess[idx]!=word[4]:
+                guess.setUnused()
+           
+
+
 
 #======
 # playRound(players, words, all_words, settings)
@@ -32,7 +40,8 @@ def playWordle():
 
     # initialize WordBanks
     all_words = WordBank("words_alpha.txt")
-    ...
+    five_letter_words = WordBank("words_alpha.txt")
+
 
     # intialize settings to the baseline settings
     settings = Setting()
@@ -47,6 +56,7 @@ def playWordle():
     # end game by displaying player stats
 
 def main():
+    Intro()
     playWordle()
 
 if __name__ == "__main__":
