@@ -45,7 +45,7 @@ class WordlePlayer(Player):
         if won:
             self.total_tries = tries + 1
             self.wins = tries + 1
-            self.current_tries = [tries]
+            self.current_tries.append(tries)
         elif won == False:
             self.total_tries = tries + 1
             self.winstreak = 0
@@ -58,11 +58,11 @@ class WordlePlayer(Player):
         return self.total_tries
     def currentStreak(self):
         return self.winstreak
-    def maxStreak(self):
+    def maxStreak(self): 
         return self.maxstreak
     
     def guessDist(self): #prints guess distribution stats
-        #These variables keeep track of how
+        #These variables keeep track of how many tries player attempted befor win
 
         one_try = 0 
         two_try = 0
@@ -84,12 +84,9 @@ class WordlePlayer(Player):
             elif self.current_tries[idx] == 6:
                 six_try = six_try + 1
 
-        
+        return [one_try, ]
 
-
-
-
-
+    def histogram(self):
     def displayStats(self):
         print("Games Played: " + self.gamesplayed)
         print("Win %: " + self.winpercent + "%")
