@@ -13,7 +13,7 @@
 from fancyword import FancyWord
 
 # TODO - make WordleWord
-class WordleWord(FancyWord):
+class wordleword(FancyWord):
     def setCorrect(pos):
         setColorAt(pos, "green")
     def setMisplaced(pos):
@@ -27,8 +27,8 @@ class WordleWord(FancyWord):
         if colorAt(pos, "yellow"):
             return True
     def isNotUsed(pos):
-            if colorAt(pos, "grey"):
-                return True
+        if colorAt(pos, "grey"):
+            return True
 
 # given a word from common letter text
 # inherit the word into this class

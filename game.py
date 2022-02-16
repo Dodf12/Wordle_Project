@@ -10,14 +10,16 @@ from wordleplayer import WordlePlayer
 #   guess - WordleWord that have been guessed
 #   alphabet - WordleWord of the letters a-z that have been marked
 #======
-def markGuess(word, guess, alphabet):
-    for idx in len(range(guess)): #marks character green
-        if guess[idx] == word[idx]:
-            guess.setCorrect()
-    for idx in len(range(guess)): #trying to see if character of guess is not in word
-            if guess[idx]!=word[0] and guess[idx]!=word[1] and guess[idx]!=word[2] and guess[idx!=word[3] and guess[idx]!=word[4]:
-                guess.setUnused()
-           
+# def markGuess(word, guess, alphabet):
+#     g = guess
+#     for idx in len(range(g)): #marks character green
+#         if g[idx] == word[idx]:
+#             g.setCorrect()
+#     for idx in len(range(g)): #trying to see if character of guess is not in word
+#         if g[idx]!=word[0] and g[idx]!=word[1] and g[idx]!=word[2] and g[idx!=word[3] and g[idx]!=word[4]:
+#             g.setUnused()
+    # for idx in len(range(g)): #marking the character yellow
+    #     if
 
 
 
@@ -31,6 +33,7 @@ def markGuess(word, guess, alphabet):
 #   all_words - Wordbank of the legal words to guess
 #   settings - Settings of game
 #======
+
 def playRound(players, words, all_words, settings):
     pass # TODO
 
