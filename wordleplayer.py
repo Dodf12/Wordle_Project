@@ -29,7 +29,7 @@
 from player import Player
 
 # TODO - make WordlePlayer
-class WordlePlayer(Player):
+class wordlePlayer(Player):
     def __init__(self, name, maxTry):
         self.name = name
         self.maxTry = maxTry #maximum amt of tries p/game
@@ -84,13 +84,58 @@ class WordlePlayer(Player):
             elif self.current_tries[idx] == 6:
                 six_try = six_try + 1
 
-        return [one_try, ]
+        return [one_try, two_try, three_try, four_try, five_try, six_try]
 
     def histogram(self):
+        print("Guess Distribution")
+        print("1:", end="")
+        x = self.guessDist()
+    
+        for idx in(range(x[0])):
+            print("#", end="")
+        print(str(x[0]), end="")
+
+        for idx in(range(x[1])):
+            print("#", end="")
+        print(str(x[1]), end="")
+
+        for idx in(range(x[2])):
+            print("#", end="")
+        print(str(x[2]), end="")
+
+        for idx in(range(x[3])):
+            print("#", end="")
+        print(str(x[3]), end="")
+
+        for idx in(range(x[4])):
+            print("#", end="")
+        print(str(x[4]), end="")
+        
+        for idx in(range(x[5])):
+            print("#", end="")
+        print(str(x[5]), end="")
+
+
+
     def displayStats(self):
-        print("Games Played: " + self.gamesplayed)
-        print("Win %: " + self.winpercent + "%")
-        print("Current Streak: " + self.winstreak)
-        print("Guess Distrubution"
+        print("Games Played: " + str(self.gamesplayed))
+        print("Win %: " + str(self.winpercent) + "%")
+        print("Current Streak: " + str(self.winstreak))
+        self.histogram()
+
+p = wordlePlayer("Mark", 6) 
+p.updateStats(True, 3) 
+p.updateStats(True, 3) 
+p.updateStats(True, 4) 
+p.updateStats(False, 0) 
+p.updateStats(True, 5) 
+p.updateStats(True, 5) 
+p.updateStats(True, 3) 
+p.updateStats(True, 2) 
+p.updateStats(False, 20) 
+p.updateStats(True, 2) 
+p.updateStats(True, 3) 
+p.displayStats()
+p.displayStats()
 
         
