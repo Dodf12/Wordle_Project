@@ -30,8 +30,8 @@ def Intro():
             print("Exiting You Out Of The Game . . .")
         elif new_attempt == "Maybe":
             print("Done Taking Maybes From You, Im Kicking You Out Of The Game Instead 🙄 ")
-b = Intro()
-print(b)
+c = Intro()
+print(c)
 
 
                   
