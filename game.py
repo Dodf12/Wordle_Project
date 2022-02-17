@@ -12,18 +12,6 @@ from wordleplayer import WordlePlayer
 #   guess - WordleWord that have been guessed
 #   alphabet - WordleWord of the letters a-z that have been marked
 #======
-# def markGuess(word, guess, alphabet):
-#     g = guess
-#     for idx in len(range(g)): #marks character green
-#         if g[idx] == word[idx]:
-#             g.setCorrect()
-#     for idx in len(range(g)): #trying to see if character of guess is not in word
-#         if g[idx]!=word[0] and g[idx]!=word[1] and g[idx]!=word[2] and g[idx!=word[3] and g[idx]!=word[4]:
-#             g.setUnused()
-    # for idx in len(range(g)): #marking the character yellow
-    #     if
-
-
 
 #======
 # playRound(players, words, all_words, settings)
@@ -36,8 +24,22 @@ from wordleplayer import WordlePlayer
 #   settings - Settings of game
 #======
 
+def markGuess(word, guess, alphabet):
+    g = guess
+    w = word
+    a = alphabet
+
+    for idx in range(len(g)): #seeing if character in guess algins with character in word
+        if guess[idx] == w[idx]:
+            g.isCorrect()
+    
+    for idx in range(len(g)):
+        if g[idx] != w[0] and g[idx] != w[1] and g[idx] != w[2] and g[idx] != w[3] and g[idx] != w[4]:
+            g.set
+             
+
 def playRound(players, words, all_words, settings):
-    pass # TODO
+    
 
 
 def playWordle():
