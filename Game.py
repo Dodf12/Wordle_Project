@@ -22,7 +22,7 @@ from Greetings import Intro
 #   players - List of WordlePlayers
 #   words - Wordbank of the common words to select from
 #   all_words - Wordbank of the legal words to guess
-#   settings - Settings of game
+#   settings - Settings of game test
 #======
 
 def markGuess(word, guess, alphabet):
