@@ -39,7 +39,9 @@ def markGuess(word, guess, alphabet):
             g.set
              
 
-#def playRound(players, words, all_words, settings):
+def playRound(players, words, all_words, settings):
+    WordBank("common5letter.txt")
+    
     
 
 
