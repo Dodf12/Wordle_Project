@@ -66,7 +66,7 @@ def playWordle():
 def main():
 
     Intro()
-    #playWordle()
+    playWordle()
 
-#if __name__ == "__main__":
-    #main()
+if __name__ == "__main__":
+    main()
