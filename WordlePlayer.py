@@ -26,7 +26,7 @@
 #      5: # 0
 #      6: # 0
 #=============
-from player import Player
+from Player import Player
 
 # TODO - make WordlePlayer
 class WordlePlayer(Player):
@@ -123,7 +123,7 @@ class WordlePlayer(Player):
         print("Current Streak: " + str(self.winstreak))
         self.histogram()
 
-p = wordlePlayer("Mark", 6) 
+p = WordlePlayer("Mark", 6) 
 p.updateStats(True, 3) 
 p.updateStats(True, 3) 
 p.updateStats(True, 4) 

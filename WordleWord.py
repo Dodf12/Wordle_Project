@@ -10,10 +10,10 @@
 #    setMisplaced(pos) - integer - set character are pos misplaced and colors accordingly
 #    setNotUsed(pos) - integer - set character are pos misplaced and colors accordingly
 #===========================================================================
-from fancyword import FancyWord
+from FancyWord import FancyWord
 
 # TODO - make WordleWord
-class wordleword(FancyWord):
+class WordleWord(FancyWord):
     def setCorrect(pos):
         setColorAt(pos, "green")
     def setMisplaced(pos):
@@ -29,6 +29,7 @@ class wordleword(FancyWord):
     def isUnUsed(pos):
         if colorAt(pos, "grey"):
             return True
+            
 
 # given a word from common letter text
 # inherit the word into this class

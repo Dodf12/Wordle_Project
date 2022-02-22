@@ -1,8 +1,9 @@
 import string
-from setting import Setting
-from wordbank import WordBank
-from wordleword import WordleWord
-from wordleplayer import WordlePlayer
+from Setting import Setting
+from WordBank import WordBank
+from WordleWord import WordleWord
+from WordlePlayer import WordlePlayer
+from Greetings import Intro
 
 # testing github
 
@@ -63,9 +64,8 @@ def playWordle():
     # end game by displaying player stats
 
 def main():
-    p.wordleplayer("Mark",6)
-    
-    #Intro()
+
+    Intro()
     #playWordle()
 
 #if __name__ == "__main__":
