@@ -38,7 +38,7 @@ def markGuess(word, guess, alphabet):
             g.set
              
 
-def playRound(players, words, all_words, settings):
+#def playRound(players, words, all_words, settings):
     
 
 
@@ -63,8 +63,10 @@ def playWordle():
     # end game by displaying player stats
 
 def main():
-    Intro()
-    playWordle()
+    p.wordleplayer("Mark",6)
+    
+    #Intro()
+    #playWordle()
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+    #main()

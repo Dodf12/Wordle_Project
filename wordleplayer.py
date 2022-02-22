@@ -29,7 +29,7 @@
 from player import Player
 
 # TODO - make WordlePlayer
-class wordlePlayer(Player):
+class WordlePlayer(Player):
     def __init__(self, name, maxTry):
         self.name = name
         self.maxTry = maxTry #maximum amt of tries p/game

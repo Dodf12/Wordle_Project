@@ -26,7 +26,7 @@ class wordleword(FancyWord):
     def isMisplace(pos):
         if colorAt(pos, "yellow"):
             return True
-    def isNotUsed(pos):
+    def isUnUsed(pos):
         if colorAt(pos, "grey"):
             return True
 
