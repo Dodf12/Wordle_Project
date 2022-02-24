@@ -46,7 +46,6 @@ def playRound(players, words, all_words, settings):
 
 
 def playWordle():
-    print("Let's play the game of Wordle!")
 
     # initialize WordBanks
     all_words = WordBank("words_alpha.txt")
@@ -60,14 +59,16 @@ def playWordle():
     settings.setSetting('difficulty', 'normal')
 
     # make the player
+    Greetings.Intro()
+    name = Greetings.getName() #getting name since player gave in Greetings class
 
+    player = Player(name)
     # start playing rounds of Wordle
-
+    
     # end game by displaying player stats
 
 def main():
 
-    Intro()
     playWordle()
 
 if __name__ == "__main__":
