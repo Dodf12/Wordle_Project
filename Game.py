@@ -32,15 +32,20 @@ def markGuess(word, guess, alphabet):
 
     for idx in range(len(g)): #seeing if character in guess algins with character in word
         if guess[idx] == w[idx]:
-            g.isCorrect()
+            g.setCorrect(idx)
     
     for idx in range(len(g)):
         if g[idx] != w[0] and g[idx] != w[1] and g[idx] != w[2] and g[idx] != w[3] and g[idx] != w[4]:
-            g.set
+            g.setUnused(idx)
+
+    
              
 
 def playRound(players, words, all_words, settings):
-    WordBank("common5letter.txt")
+    random_word = getRandom()
+    for i in range(7):
+        guess = input("Enter a guess")
+        markGuess( ,guess,"abcdefghijklmnopqrstuvwxyz")
     
     
 
@@ -62,9 +67,12 @@ def playWordle():
     Greetings.Intro()
     name = Greetings.getName() #getting name since player gave in Greetings class
 
-    player = Player(name)
+    player = WordlePlayer(name, 6)
     # start playing rounds of Wordle
     
+    players = [player] #putting player object into list
+    words #gett
+    playRound(players, )
     # end game by displaying player stats
 
 def main():

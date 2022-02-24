@@ -31,8 +31,8 @@ from Player import Player
 # TODO - make WordlePlayer
 class WordlePlayer(Player):
     def __init__(self, name, maxTry):
-        self.name = name
-        self.maxTry = maxTry #maximum amt of tries p/game
+        super().__init__(name)
+        self.maxTry = 6 #maximum amt of tries p/game
         self.gamesplayed = 0 #total games played
         self.winpercent = 0.0 
         self.winstreak = 0 #current win streak
