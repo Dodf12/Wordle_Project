@@ -123,18 +123,5 @@ class WordlePlayer(Player):
         print("Current Streak: " + str(self.winstreak))
         self.histogram()
 
-p = WordlePlayer("Mark", 6) 
-p.updateStats(True, 3) 
-p.updateStats(True, 3) 
-p.updateStats(True, 4) 
-p.updateStats(False, 0) 
-p.updateStats(True, 5) 
-p.updateStats(True, 5) 
-p.updateStats(True, 3) 
-p.updateStats(True, 2) 
-p.updateStats(False, 20) 
-p.updateStats(True, 2) 
-p.updateStats(True, 3) 
-p.displayStats()
-p.displayStats()
+
         
