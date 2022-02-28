@@ -3,7 +3,7 @@ from Setting import Setting
 from WordBank import WordBank
 from WordleWord import WordleWord
 from WordlePlayer import WordlePlayer
-from Greetings import Intro
+from Greetings import Greetings
 
 # testing github
 
@@ -79,8 +79,8 @@ def playWordle():
     settings.setSetting('difficulty', 'normal')
 
     # make the player
-    Intro()
-    name = Greetings.getName() #getting name since player gave in Greetings class
+    name = Greetings() #calling the greeting function, which outputs player name
+    
 
     player = Player(name)
     player_list = player
@@ -108,5 +108,4 @@ def main():
 
     playWordle()
 
-if __name__ == "__main__":
-    main()
+
