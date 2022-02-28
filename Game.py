@@ -32,15 +32,35 @@ def markGuess(word, guess, alphabet):
 
     for idx in range(len(g)): #seeing if character in guess algins with character in word
         if guess[idx] == w[idx]:
-            g.isCorrect()
+            g.isCorrect(idx)
     
     for idx in range(len(g)):
         if g[idx] != w[0] and g[idx] != w[1] and g[idx] != w[2] and g[idx] != w[3] and g[idx] != w[4]:
-            g.set
+            g.setUnused(idx)
+
+    for idx in range(len(g)):
+        if g.colorAt(idx) != "green" or g.colorAt(idx) != "yellow":
+            g.setMisplaced(idx)
+    
+
+
              
 
 def playRound(players, words, all_words, settings):
     WordBank("common5letter.txt")
+
+    for i in range(6):
+        player_guess = input("Enter your guess")
+        if len(guess) !=5:
+            player_guess = input("Please guess a proper 5 letter word")
+
+        markGuess(word, player_guess, "abcdefghijklmnopqrstuvwxyz")
+
+        print(player_guess)
+        print(alphabet)
+    
+    updateStats()
+
     
     
 
@@ -59,13 +79,30 @@ def playWordle():
     settings.setSetting('difficulty', 'normal')
 
     # make the player
-    Greetings.Intro()
+    Intro()
     name = Greetings.getName() #getting name since player gave in Greetings class
 
     player = Player(name)
+    player_list = player
     # start playing rounds of Wordle
-    
+    playRound(player_list, five_letter_words, all_words, settings)
     # end game by displaying player stats
+    player.displayStats
+
+    play_again = input("Play again")
+    play_again_bool = False
+
+    if play_again == "yes":
+        play_again_bool = True
+    
+    else:
+        play_again_bool = False
+
+    while play_again_bool:
+        playRound(player_list, five_letter_words, all_words, settings)
+
+    if play_again_bool == False:
+        displayStats()
 
 def main():
 

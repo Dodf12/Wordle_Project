@@ -5,7 +5,7 @@ class Greetings:
         self.name = ""
     def getName(self):
         return self.name
-    def Intro(self):
+    def Intro(self): #This is the function that comes up when you first activate game
         print("Let's play the game of Wordle!!")
         self.name = input("Player 1, Enter your name: ")
         a = "Welcome " + self.name + ", Are You Ready To Play The Game Of Wordle? (Enter Yes or No): "
@@ -37,8 +37,7 @@ class Greetings:
                 print("Exiting You Out Of The Game . . .")
             elif new_attempt == "Maybe":
                 print("Done Taking Maybes From You, Im Kicking You Out Of The Game Instead 🙄 ")
-c = Intro()
-print(c)
+
 
 
                   
