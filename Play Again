@@ -1,0 +1,16 @@
+def PlayAgain():
+    replay = input("Play again?(Enter Yes or No)")
+    if replay == "Yes":
+        print("Loading You In To The Game . . .")
+    elif replay == "No":
+        print("Exiting You Out Of The Game . . .")
+    else:    
+        new_attempt = ""
+        while (new_attempt != "Yes" and new_attempt != "No"):        
+            new_attempt = input("That is not a valid input, please try again!: ")
+        if new_attempt == "Yes":
+            print("Loading You In To The Game . . .")
+        elif new_attempt == "No":
+            print("Exiting You Out Of The Game . . .")
+b = PlayAgain()
+print(b)
