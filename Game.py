@@ -3,7 +3,7 @@ from Setting import Setting
 from WordBank import WordBank
 from WordleWord import WordleWord
 from WordlePlayer import WordlePlayer
-
+from FancyWord import FancyWord
 
 # testing github
 
@@ -26,40 +26,41 @@ from WordlePlayer import WordlePlayer
 #======
 
 def markGuess(word, guess, alphabet):
-    g = FancyWord(guess)
-    w = word
-    a = alphabet
+    g = guess.getWord()
+    #string
+    w = word 
+    #alphabet obj
+    a = alphabet 
+    print("Inside markguess")
 
-    for idx in range(len(g)): #seeing if character in guess algins with character in word
-        if guess[idx] == w[idx]:
-            g.isCorrect(idx)
-    
-    for idx in range(len(g)):
-        if g[idx] != w[0] and g[idx] != w[1] and g[idx] != w[2] and g[idx] != w[3] and g[idx] != w[4]:
-            g.setUnused(idx)
+    #seeing if character in guess algins with character in word
+    for idx in range(len(g)-1):
+        for jdx in range(len(w)-1):
+            if (g[idx] == w[idx]):
+                guess.setCorrect(idx)
+                guess.__str__()
+            if (g[idx] == w[jdx]):
+                guess.setMisplaced(idx)
+            if (g[idx] != w[jdx]):
+                guess.setUnused(idx)
 
-    for idx in range(len(g)):
-        if g.colorAt(idx) != "green" or g.colorAt(idx) != "yellow":
-            g.setMisplaced(idx)
-    
-
-
-             
-
-def playRound(players, words, all_words, settings):
-    WordBank("common5letter.txt")
-    
-    for i in range(6):
-        player_guess = input("Enter your guess: ")
-        if len(player_guess) !=5:
-            player_guess = input("Please guess a proper 5 letter word")
-
-        markGuess(word, player_guess, "abcdefghijklmnopqrstuvwxyz")
-
-        print(player_guess)
-        print(alphabet)
-    
-    player.updateStats()
+def playRound(player, words, all_words, settings):
+    ranWord = words.getRandom()
+    print(ranWord)
+    #for i in range(6):
+    player_guess = input("Enter your guess: ")
+    if len(player_guess) < 5 or all_words.contains(player_guess):
+        while len(player_guess) != 5:
+            player_guess = input("Please guess a proper 5 letter valid word")
+    else:
+        print("Guess word ----")
+        player_guess_obj = WordleWord(player_guess)
+        alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
+        print("Guess word bfbfbf")
+        markGuess(ranWord, player_guess_obj, alphaObj)
+        print("Guess word ",player_guess_obj.getWord())
+        print(" Alphabet ",alphaObj.getWord())
+        player[0].updateStats()
 
     
     
@@ -69,7 +70,7 @@ def playWordle():
 
     # initialize WordBanks
     all_words = WordBank("words_alpha.txt")
-    five_letter_words = WordBank("words_alpha.txt")
+    five_letter_words = WordBank("common5letter.txt")
 
 
     # intialize settings to the baseline settings
@@ -78,17 +79,22 @@ def playWordle():
     settings.setSetting('numplayers', 1)
     settings.setSetting('difficulty', 'normal')
 
-    # make the player
+  
+
+    #-NOTE-This is the intro sequence that we created as a little easter egg
 
     print("Let's play the game of Wordle!!")
     name = input("Player 1, Enter your name: ")
 
     a = "Welcome " + name + ", Are You Ready To Play The Game Of Wordle? (Enter Yes or No): Please use caps "
-    b = "If You Wanted To Say Maybe, Then Why Are You Playing The Game In The First Place 🙄 "
+    #b = "If You Wanted To Say Maybe, Then Why Are You Playing The Game In The First Place 🙄 "
     ready = input(a)
-    mayb = input(b)
-    if ready == "Yes":
+    #mayb = input(b)
+    if ready == "yes":
         print("Loading You In To The Game . . .")
+
+
+    """
     elif ready == "No":
         print("Exiting You Out Of The Game . . .")
     elif mayb == "Maybe":
@@ -112,16 +118,16 @@ def playWordle():
             print("Exiting You Out Of The Game . . .")
         elif new_attempt == "Maybe":
             print("Done Taking Maybes From You, Im Kicking You Out Of The Game Instead 🙄 ")
-    
+    """
 
+    # make the player
+    #actually created the player object here
     player = WordlePlayer(name, 6)
-    player_list = player
+    player_list = []
+    player_list = player_list + [player]
     # start playing rounds of Wordle
     playRound(player_list, five_letter_words, all_words, settings)
-    # end game by displaying player stats
-
-
-
+    # Finding out of another round is being player and end game by displaying player stats
     play_again = input("Play again")
     play_again_bool = False
 
