@@ -1,3 +1,4 @@
+   
 import string
 from Setting import Setting
 from WordBank import WordBank
