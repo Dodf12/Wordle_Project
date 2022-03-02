@@ -14,22 +14,25 @@ from FancyWord import FancyWord
 
 # TODO - make WordleWord
 class WordleWord(FancyWord):
-    def setCorrect(pos):
-        setColorAt(pos, "green")
-    def setMisplaced(pos):
-        setColorAt(pos, "yellow")
-    def setUnused(pos):
-        setColorAt(pos, "grey")
-    def isCorrect(pos):
-        if colorAt(pos, "green"):
+    def __init__(self, w):
+        super().__init__(w)           
+    def setCorrect(self,pos):
+        self.setColorAt(pos, "green")
+    def setMisplaced(self,pos):
+        self.setColorAt(pos, "yellow")
+    def setUnused(self,pos):
+        self.setColorAt(pos, "red")
+    def isCorrect(self,pos):
+        if self.colorAt(pos, "green"):
             return True          
-    def isMisplace(pos):
-        if colorAt(pos, "yellow"):
+    def isMisplace(self,pos):
+        if self.colorAt(pos, "yellow"):
             return True
-    def isUnUsed(pos):
-        if colorAt(pos, "grey"):
+    def isUnUsed(self,pos):
+        if self.colorAt(pos, "red"):
             return True
             
+
 
 # given a word from common letter text
 # inherit the word into this class
