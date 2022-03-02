@@ -35,34 +35,35 @@ def markGuess(word, guess, alphabet):
     #for idx in range(len(g)):
 
 
-    for idx in range(len(g)):        #using double loop, one for guess and the other for the actual word
-        for jdx in range(len(w)):
-            if (g[idx] == w[jdx]):
-                #print(idx)
-                guess.setCorrect(idx)
+    for idx in range(len(g)): #using double loop, one for guess and the other for the actual word    
 
-                alphaidx= a.find(g[idx])             #finds index of correct letter in the alphabet object
-                alphabet.setCorrect(alphaidx)
+            for jdx in range(len(w)):
+                if (g[idx] == w[idx]):   #marks letter green
+                    #print(idx)
+                    guess.setCorrect(idx)
 
-                g=guess.getWord()
-                break           
-                #print(g[idx],"-",w[idx])       
-            if (g[idx] == w[jdx]):
-                guess.setMisplaced(idx)
+                    alphaidx= a.find(g[idx])             #finds index of correct letter in the alphabet object
+                    alphabet.setCorrect(alphaidx)
 
-                alphaidx= a.find(g[idx])
-                alphabet.setMisplaced(alphaidx)
+                    g=guess.getWord()
+                    break           
+                    print(g[idx],"-",w[idx])       
+                if (g[idx] == w[jdx]):         #
+                    guess.setMisplaced(idx)
 
-                g=guess.getWord()
-                break
-            if (g[idx] != w[jdx]):
-                guess.setUnused(idx)
+                    alphaidx= a.find(g[idx])
+                    alphabet.setMisplaced(alphaidx)
 
-                alphaidx= a.find(g[idx])
-                alphabet.setUnused(alphaidx)
+                    g=guess.getWord()
+                    break
+                if (g[idx] != w[jdx]):
+                    guess.setUnused(idx)
 
-                g=guess.getWord()
-                
+                    alphaidx= a.find(g[idx])
+                    alphabet.setUnused(alphaidx)
+
+                    g=guess.getWord()
+                    
 
 def playRound(player, words, all_words, settings):
     ranWord = words.getRandom()
@@ -92,10 +93,9 @@ def playRound(player, words, all_words, settings):
     for i in range(6):                                                                        
                                                                                               #                                                      
         player_guess = input("Enter your guess: ")                                            
-        print(all_words.contains(player_guess))
-        if len(player_guess) < 5 or not all_words.contains(player_guess):
+        if len(player_guess) != 5 or not all_words.contains(player_guess):
             while len(player_guess) != 5:
-                player_guess = input("Please guess a proper 5 letter valid word")
+                player_guess = input("Please guess a proper 5 letter valid word: ")
         else:
             player_guess_obj = WordleWord(player_guess)
             alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
@@ -125,11 +125,11 @@ def playWordle():
     print("Let's play the game of Wordle!!")
     name = input("Enter your name: ")
 
-    a = "Welcome " + name + ", Are You Ready To Play The Game Of Wordle? (Enter Yes or No): Please use caps "
+    a = "Welcome " + name + ", Are You Ready To Play The Game Of Wordle? (Enter Yes or No & Please Use Çaps): "
     #b = "If You Wanted To Say Maybe, Then Why Are You Playing The Game In The First Place 🙄 "
     ready = input(a)
     #mayb = input(b)
-    if ready == "yes":
+    if ready == "Yes":
         print("Loading You In To The Game . . .")
 
 
@@ -185,4 +185,10 @@ def playWordle():
 
 
 
-playWordle()
+#playWordle()
+word = "candy"
+guess = WordleWord("crane")
+alpha = WordleWord("abcdefghijklmnopqrstuvwxyz")
+markGuess(word, guess, alpha)
+print(guess)
+print(alpha)

@@ -21,7 +21,7 @@ class WordleWord(FancyWord):
     def setMisplaced(self,pos):
         self.setColorAt(pos, "yellow")
     def setUnused(self,pos):
-        self.setColorAt(pos, "red")
+        self.setColorAt(pos, "gray")
     def isCorrect(self,pos):
         if self.colorAt(pos, "green"):
             return True          
@@ -29,7 +29,7 @@ class WordleWord(FancyWord):
         if self.colorAt(pos, "yellow"):
             return True
     def isUnUsed(self,pos):
-        if self.colorAt(pos, "red"):
+        if self.colorAt(pos, "blue"):
             return True
             
 
