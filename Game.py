@@ -67,7 +67,6 @@ def markGuess(word, guess, alphabet):
 
 def playRound(player, words, all_words, settings):
     ranWord = words.getRandom()
-    print(ranWord)
     guess_list = [1, 2, 3, 4, 5, 6]
 
     # i = 0
@@ -185,10 +184,10 @@ def playWordle():
 
 
 
-#playWordle()
-word = "candy"
-guess = WordleWord("crane")
-alpha = WordleWord("abcdefghijklmnopqrstuvwxyz")
-markGuess(word, guess, alpha)
-print(guess)
-print(alpha)
+playWordle()
+# word = "candy"
+# guess = WordleWord("crane")
+# alpha = WordleWord("abcdefghijklmnopqrstuvwxyz")
+# markGuess(word, guess, alpha)
+# print(guess)
+# print(alpha)
