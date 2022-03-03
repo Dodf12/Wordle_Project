@@ -32,3 +32,5 @@ class Setting:
             return self.settings[name] == value
         else:
             return False
+
+# testing

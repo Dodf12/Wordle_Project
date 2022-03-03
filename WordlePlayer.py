@@ -121,7 +121,7 @@ class WordlePlayer(Player):
         print("Games Played: " + str(self.gamesplayed))
         print("Win %: " + str(self.winpercent) + "%")
         print("Current Streak: " + str(self.winstreak))
-        self.histogram()
+        histogram()
 
 
         
