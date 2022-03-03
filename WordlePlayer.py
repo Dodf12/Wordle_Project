@@ -88,32 +88,43 @@ class WordlePlayer(Player):
 
     def histogram(self):
         print("Guess Distribution")
-        print("1:", end="")
         x = self.guessDist()
     
         for idx in(range(x[0])):
             print("#", end="")
         print(str(x[0]), end="")
 
+        print(end="")
+
         for idx in(range(x[1])):
             print("#", end="")
         print(str(x[1]), end="")
+
+        print(end="")
 
         for idx in(range(x[2])):
             print("#", end="")
         print(str(x[2]), end="")
 
+        print(end="")
+
         for idx in(range(x[3])):
             print("#", end="")
         print(str(x[3]), end="")
 
+        print(end="")
+
         for idx in(range(x[4])):
             print("#", end="")
         print(str(x[4]), end="")
+
+        print(end="")
         
         for idx in(range(x[5])):
             print("#", end="")
         print(str(x[5]), end="")
+
+        print(end="")
 
 
 
@@ -121,7 +132,8 @@ class WordlePlayer(Player):
         print("Games Played: " + str(self.gamesplayed))
         print("Win %: " + str(self.winpercent) + "%")
         print("Current Streak: " + str(self.winstreak))
-        histogram()
+        player.histogram()
 
 
         
+

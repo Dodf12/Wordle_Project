@@ -73,10 +73,11 @@ def playRound(player, words, all_words, settings):
     guess_list = [1,2,3,4,5,6]
     # ===== REAL CODE< DO NOT TOUCH>
 
+
     for i in range(6):             #Game has six rounds, so it is looping six times                                                           
                                                                                               #                                                      
         #print("Hi")
-        player_guess = input("Enter your valid guess: ") 
+        player_guess = input("Enter your guess!: ") 
         #print("player guess",player_guess)
         if player_guess == ranWord:
             player_guess_obj = WordleWord(player_guess)              
@@ -85,12 +86,17 @@ def playRound(player, words, all_words, settings):
             print(str(guess_list[i]) + ":",player_guess_obj)
             print(" Alphabet ",alphaObj)
             print("Congratulations! You have guessed the correct word")
-            player.updateStats(True,1)
-            break        
+            player[0].updateStats(True,1)
+            return        
         else:
-            if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
+            if len(player_guess) != 5:   #checks if word doesn't have 5 letters or not in dictionary
                 while len(player_guess) != 5:
-                    player_guess = input("Please guess a proper 5 letter valid word: ")
+                    player_guess = input("Please guess a 5 letter word: ")
+            
+            elif not all_words.contain(player_guess):
+                while player_guess not in all_words.contains(player_guess):
+                    player_guess = input("Please guess a valid english word: ")
+
             else:
                 #print("player guess in else",player_guess)
                 player_guess_obj = WordleWord(player_guess)              
@@ -99,6 +105,7 @@ def playRound(player, words, all_words, settings):
                 print(str(guess_list[i]) + ":",player_guess_obj)
                 print(" Alphabet ",alphaObj)
     print("Sorry, you weren't able to guess the word within the allowed number of attempts")
+    print("The correct word was: " )
 
 
 
@@ -125,36 +132,21 @@ def playWordle():
     print("Let's play the game of Wordle!!")
     name = input("Enter your name: ")
 
-    a = "Welcome " + name + ", Do you wish to play? (Enter Yes or No & Please Use Çaps): "
-    #b = "If You Wanted To Say Maybe, Then Why Are You Playing The Game In The First Place 🙄 "
-    ready = input(a)
-    #mayb = input(b)
-    if ready == "Yes":
+    ready_to_play = input("Welcome " + name + " Do you wish to play? (Enter Yes or No & Please Use Çaps): ") #part 1 of intro, welcoming
+    if ready_to_play == "Yes":
         print("Loading You In To The Game . . .")
-    elif ready == "No":
+    elif ready_to_play == "No":
         print("Exiting You Out Of The Game . . .")
-        sys.exit()
-    # elif mayb == "Maybe":
-    #     input(b)
-    #     new_attempt = ""
-    #     while (new_attempt != "Yes" and new_attempt != "No"):        
-    #         new_attempt = input("That is not a valid input, please try again!: ")
-    #     if new_attempt == "Yes":
-    #         print("Loading You In To The Game . . .")
-    #     elif new_attempt == "No":
-    #         print("Exiting You Out Of The Game . . .")
-    #     elif new_attempt == "Maybe":
-    #         print("Done Taking Maybes From You, Im Kicking You Out Of The Game Instead 🙄 ")
-    # else:    
-    #     new_attempt = ""
-    #     while (new_attempt != "Yes" and new_attempt != "No" and new_attempt != "Maybe"):        
-    #         new_attempt = input("That is not a valid input, please try again!: ")
-    #     if new_attempt == "Yes":
-    #         print("Loading You In To The Game . . .")
-    #     elif new_attempt == "No":
-    #         print("Exiting You Out Of The Game . . .")
-    #     elif new_attempt == "Maybe":
-    #         print("Done Taking Maybes From You, Im Kicking You Out Of The Game Instead 🙄 ")
+        return
+    else:    
+         new_attempt = ""
+         while (new_attempt != "Yes" and new_attempt != "No"):        
+             new_attempt = input("That is not a valid input, please try again!: ")
+         if new_attempt == "Yes":
+             print("Loading You In To The Game . . .")
+         elif new_attempt == "No":
+             print("Exiting You Out Of The Game . . .")
+
 
 
     # make the player
@@ -171,7 +163,8 @@ def playWordle():
     
     
     if play_again == "no":
-        sys.exit()
+        # player.displayStats()
+        return
 
     while play_again.lower() == "yes":
         #print("eddumoham")
@@ -180,7 +173,6 @@ def playWordle():
         play_again = input("Would you like to play another round?: ")
 
 
-    player.displayStats()
     
 
 
