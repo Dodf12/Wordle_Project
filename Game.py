@@ -163,7 +163,7 @@ def playWordle():
     
     
     if play_again == "no":
-        # player.displayStats()
+        player.displayStats()
         return
 
     while play_again.lower() == "yes":

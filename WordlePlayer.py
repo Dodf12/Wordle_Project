@@ -94,37 +94,38 @@ class WordlePlayer(Player):
             print("#", end="")
         print(str(x[0]), end="")
 
-        print(end="")
+        print("")
 
         for idx in(range(x[1])):
             print("#", end="")
         print(str(x[1]), end="")
 
-        print(end="")
+        print("")
 
         for idx in(range(x[2])):
             print("#", end="")
         print(str(x[2]), end="")
 
-        print(end="")
+        print("")
 
         for idx in(range(x[3])):
             print("#", end="")
         print(str(x[3]), end="")
 
-        print(end="")
+        print("")
 
         for idx in(range(x[4])):
             print("#", end="")
         print(str(x[4]), end="")
 
-        print(end="")
+        print("")
         
         for idx in(range(x[5])):
             print("#", end="")
         print(str(x[5]), end="")
 
-        print(end="")
+        print("")
+
 
 
 
@@ -132,8 +133,20 @@ class WordlePlayer(Player):
         print("Games Played: " + str(self.gamesplayed))
         print("Win %: " + str(self.winpercent) + "%")
         print("Current Streak: " + str(self.winstreak))
-        player.histogram()
+        self.histogram()
 
 
-        
+p = WordlePlayer("Mark", 6) 
+p.updateStats(True, 3) 
+p.updateStats(True, 3) 
+p.updateStats(True, 4) 
+p.updateStats(False, 0) 
+p.updateStats(True, 5) 
+p.updateStats(True, 5) 
+p.updateStats(True, 3) 
+p.updateStats(True, 2) 
+p.updateStats(False, 20) 
+p.updateStats(True, 2) 
+p.updateStats(True, 3) 
+p.displayStats()
 
