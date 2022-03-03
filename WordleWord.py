@@ -31,7 +31,7 @@ class WordleWord(FancyWord):
     def isUnUsed(self,pos):
         if self.colorAt(pos, "blue"):
             return True
-            
+
 
 
 # given a word from common letter text
