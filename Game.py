@@ -32,7 +32,7 @@ def markGuess(word, guess, alphabet):
     #string
     w = word 
     #alphabet obj
-    a = alphabet.getWord(); 
+    #a = alphabet.getWord() 
     #seeing if character in guess algins with character in word
     #for idx in range(len(g)):
 
@@ -40,48 +40,45 @@ def markGuess(word, guess, alphabet):
     for idx in range(len(g)): #using double loop, one for guess and the other for the actual word    
 
             for jdx in range(len(w)):
+                a = alphabet.getWord() 
                 if (g[idx] == w[idx]):   #marks letter green
-                    #print(idx)
                     guess.setCorrect(idx)
 
-                    alphaidx= a.find(g[idx])             #finds index of correct letter in the alphabet object
+                    alphaidx= alphabet.getWord().find(g[idx])             #finds index of correct letter in the alphabet object
                     alphabet.setCorrect(alphaidx)
-
                     g=guess.getWord()
                     break           
-                    print(g[idx],"-",w[idx])       
+     
                 if (g[idx] == w[jdx]):         #makrs letter green
                     guess.setMisplaced(idx)
 
-                    alphaidx= a.find(g[idx])
+                    alphaidx= alphabet.getWord().find(g[idx])
                     alphabet.setMisplaced(alphaidx)
-
                     g=guess.getWord()
                     break
                 if (g[idx] != w[jdx]):  #marks gray
                     guess.setUnused(idx)
 
-                    alphaidx= a.find(g[idx])
+                    alphaidx= alphabet.getWord().find(g[idx])
                     alphabet.setUnused(alphaidx)
-
                     g=guess.getWord()
                     
-
 def playRound(player, words, all_words, settings):
     ranWord = words.getRandom() #getting random word
-    print(ranWord)
+    # print(ranWord)
     guess_list = [1,2,3,4,5,6]
     # ===== REAL CODE< DO NOT TOUCH>
-
+    alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
 
     for i in range(6):             #Game has six rounds, so it is looping six times                                                           
                                                                                               #                                                      
-        #print("Hi")
+        
         player_guess = input("Enter your guess!: ") 
-        #print("player guess",player_guess)
+        
+        
         if player_guess == ranWord:
             player_guess_obj = WordleWord(player_guess)              
-            alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
+            
             markGuess(ranWord, player_guess_obj, alphaObj)
             print(str(guess_list[i]) + ":",player_guess_obj)
             print(" Alphabet ",alphaObj)
@@ -89,23 +86,18 @@ def playRound(player, words, all_words, settings):
             player[0].updateStats(True,1)
             return        
         else:
-            if len(player_guess) != 5:   #checks if word doesn't have 5 letters or not in dictionary
+            if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
                 while len(player_guess) != 5:
-                    player_guess = input("Please guess a 5 letter word: ")
-            
-            elif not all_words.contain(player_guess):
-                while player_guess not in all_words.contains(player_guess):
-                    player_guess = input("Please guess a valid english word: ")
+                    player_guess = input("Please guess a proper 5 letter valid word: ")
 
             else:
-                #print("player guess in else",player_guess)
+                
                 player_guess_obj = WordleWord(player_guess)              
-                alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
                 markGuess(ranWord, player_guess_obj, alphaObj)
                 print(str(guess_list[i]) + ":",player_guess_obj)
                 print(" Alphabet ",alphaObj)
     print("Sorry, you weren't able to guess the word within the allowed number of attempts")
-    print("The correct word was: " )
+    print("The correct word was: " + ranWord )
 
 
 

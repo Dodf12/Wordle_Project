@@ -89,6 +89,8 @@ class WordlePlayer(Player):
     def histogram(self):
         print("Guess Distribution")
         x = self.guessDist()
+
+        
     
         for idx in(range(x[0])):
             print("#", end="")
