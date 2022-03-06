@@ -1,10 +1,10 @@
-   
 import string
 from Setting import Setting
 from WordBank import WordBank
 from WordleWord import WordleWord
 from WordlePlayer import WordlePlayer
 from FancyWord import FancyWord
+from gui import gui
 
 # testing github
 
@@ -84,55 +84,98 @@ def markGuessHard(word, guess, alphabet): #function for hard mode(It is the same
                     g=guess.getWord()             
 
 
-def playRound(player, words, all_words, settings):
+def playRound(player, words, all_words, settings, hardmode):
     ranWord = words.getRandom() 
     print(ranWord)
     guess_list = [1,2,3,4,5,6] #used to number guesses
     alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
 
+    if hardmode: #goes if player activates hardmode
+        tries_counter = 0
+        for i in range(6):             #Game has six rounds, so it is looping six times                                                           
+                                                                                                                                                        
+            player_guess = input("Enter your guess!: ") 
+            if player_guess == "h":       #EXTRA FEATURE, GIVES HINT(WHICH IS AN UNCOLORED LETTER)
+                for idx in range(len(alphaObj.getWord())):
+                    for jdx in range(len(ranWord)):
+                        if (alphaObj.colorAt(idx) == 'green' or alphaObj.colorAt(idx) and (alphaObj.getWord()[idx] == ranWord[jdx])):
+                            hint = alphaObj.getWord()[idx]
 
-        #goes here if it is normal mode
-    tries_counter = 0
-    for i in range(6):             #Game has six rounds, so it is looping six times                                                           
-                                                                                                                                                
-        
-        player_guess = input("Enter your guess!: ") 
+                    
 
-        if player_guess == "h":       #EXTRA FEATURE, GIVES HINT(WHICH IS AN UNCOLORED LETTER)
-        #     player_guess_obj = WordleWord(player_guess)              
-        #     for idx in range(6):
-        #         if player_guess_obj.ColorAt() != "yellow" or player_guess_obj.ColorAt != "green":
-        #             hint = 
 
-            hint = ranWord[0]
-            print("Ok Here is your hint: " + hint)
-        
-        
-        if player_guess == ranWord:
-            tries_counter+=1
-            player_guess_obj = WordleWord(player_guess)              
+                print("Ok Here is your hint. One of the letters is: " + hint)
             
-            markGuess(ranWord, player_guess_obj, alphaObj)
-            print(str(guess_list[i]) + ":",player_guess_obj)
-            print(" Alphabet ",alphaObj)
-            print("Congratulations! You have guessed the correct word")
-            player[0].updateStats(True,1)
-            return        
-        else:
-            tries_counter+=1
-            if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
-                while len(player_guess) != 5:
-                    player_guess = input("Please guess a proper 5 letter valid word: ")
-
-            else:
-                
+            
+            if player_guess == ranWord:
+                tries_counter+=1
                 player_guess_obj = WordleWord(player_guess)              
+                
+                markGuessHard(ranWord, player_guess_obj, alphaObj)
+                print(str(guess_list[i]) + ":",player_guess_obj)
+                print(" Alphabet ",alphaObj)
+                print("Congratulations! You have guessed the correct word")
+                player[0].updateStats(True,1)
+                return    
+            else:
+                tries_counter+=1
+                if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
+                    while len(player_guess) != 5:
+                        player_guess = input("Please guess a proper 5 letter valid word: ")
+
+                else:
+                    
+                    player_guess_obj = WordleWord(player_guess)              
+                    markGuessHard(ranWord, player_guess_obj, alphaObj)
+                    print(str(guess_list[i]) + ":",player_guess_obj)
+                    print(" Alphabet ",alphaObj)
+        print("Sorry, you weren't able to guess the word within the allowed number of attempts")
+        print("The correct word was: " + ranWord )
+        player[0].updateStats(False, tries_counter)
+
+    else:
+            #goes here if it is normal mode
+        tries_counter = 0
+        for i in range(6):             #Game has six rounds, so it is looping six times                                                           
+                                                                                                                                                        
+            player_guess = input("Enter your guess!: ") 
+            if player_guess == "h":       #EXTRA FEATURE, GIVES HINT(WHICH IS AN UNCOLORED LETTER)
+                for idx in range(len(alphaObj.getWord())):
+                    for jdx in range(len(ranWord)):
+                        if (alphaObj.colorAt(idx) == 'green' or alphaObj.colorAt(idx) and (alphaObj.getWord()[idx] == ranWord[jdx])):
+                            hint = alphaObj.getWord()[idx]
+
+                    
+
+
+                print("Ok Here is your hint. One of the letters is: " + hint)
+            
+            
+            if player_guess == ranWord:
+                tries_counter+=1
+                player_guess_obj = WordleWord(player_guess)              
+                
                 markGuess(ranWord, player_guess_obj, alphaObj)
                 print(str(guess_list[i]) + ":",player_guess_obj)
                 print(" Alphabet ",alphaObj)
-    print("Sorry, you weren't able to guess the word within the allowed number of attempts")
-    print("The correct word was: " + ranWord )
-    player[0].updateStats(False, tries_counter)
+                print("Congratulations! You have guessed the correct word")
+                player[0].updateStats(True,1)
+                return    
+            else:
+                tries_counter+=1
+                if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
+                    while len(player_guess) != 5:
+                        player_guess = input("Please guess a proper 5 letter valid word: ")
+
+                else:
+                    
+                    player_guess_obj = WordleWord(player_guess)              
+                    markGuess(ranWord, player_guess_obj, alphaObj)
+                    print(str(guess_list[i]) + ":",player_guess_obj)
+                    print(" Alphabet ",alphaObj)
+        print("Sorry, you weren't able to guess the word within the allowed number of attempts")
+        print("The correct word was: " + ranWord )
+        player[0].updateStats(False, tries_counter)
 
 
 
@@ -152,6 +195,7 @@ def playWordle():
     settings.setSetting('difficulty', 'normal')
 
     #Intro Sequence
+    gui()
     print("Let's play the game of Wordle!!")
     name = input("Enter your name: ")
     ready_to_play = input("Welcome " + name + " Do you wish to play? (Enter Yes or No & Please Use Çaps): ") #part 1 of intro, welcoming
@@ -159,6 +203,7 @@ def playWordle():
     if ready_to_play == "Yes":
         print("Loading You In To The Game . . .")
         print("You may ask for a hint by typing h, but it does take one of your tries so use it wisely")
+        print("")
  
     elif ready_to_play == "No":
         print("Exiting You Out Of The Game . . .")
@@ -174,26 +219,43 @@ def playWordle():
          elif new_attempt == "No":
              print("Exiting You Out Of The Game . . .")
 
-
-
+    
     # make the player
-    #actually created the player object here
     player = WordlePlayer(name, 6)
     player_list = []
     player_list = player_list + [player]
     
 
     # start playing rounds of Wordle
-    playRound(player_list, five_letter_words, all_words, settings)
-    
+    hard_mode = input("Would you like to activate hard mode? ")
+    while (hard_mode  != "Yes" and hard_mode  != "No"):        
+        hard_mode  = input("That is not a valid input, please try again!: ")
+    if hard_mode == "Yes":
+        playRound(player_list, five_letter_words, all_words, settings, True)
+
+    elif hard_mode == "No":
+        playRound(player_list, five_letter_words, all_words, settings, False)
+
+
     # Finding out of another round is being player and end game by displaying player stats
     play_again = input("Would you like to play another round?: ")
 
     while (play_again  != "Yes" and play_again  != "No"):        
              play_again  = input("That is not a valid input, please try again!: ")
    
+    
     if play_again == "Yes":  #code to activate hardmode
-            playRound(player_list, five_letter_words, all_words, settings)
+            hard_mode = input("Would you like to activate hard mode? ")
+            while (hard_mode  != "Yes" and hard_mode  != "No"):        
+                hard_mode  = input("That is not a valid input, please try again!: ")
+            if hard_mode == "Yes":
+                while hard_mode == "Yes":
+                    playRound(player_list, five_letter_words, all_words, settings, True)
+
+            elif hard_mode == "No":
+                while hard_mode == "No":
+                    playRound(player_list, five_letter_words, all_words, settings, False)
+
 
     
     if play_again == "No":

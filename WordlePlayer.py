@@ -140,7 +140,7 @@ class WordlePlayer(Player):
         print(barlist[5] + ": ", end="")        
         for idx in(range(x[5])):
             print("#", end="")
-        print("" + str(x[5]), end="")
+        print(" " + str(x[5]), end="")
         
         print("")
 
