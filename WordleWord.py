@@ -13,7 +13,7 @@
 from FancyWord import FancyWord
 
 # TODO - make WordleWord
-class WordleWord(FancyWord):
+class wordleword(FancyWord):
     def __init__(self, w):
         super().__init__(w)           
     def setCorrect(self,pos):

@@ -3,9 +3,10 @@ import string
 import sys #used to forcibly quit program
 from Setting import Setting
 from WordBank import WordBank
-from WordleWord import WordleWord
+from wordleword import wordleword
 from WordlePlayer import WordlePlayer
 from FancyWord import FancyWord
+from gui import gui
 
 # testing github
 
@@ -79,8 +80,8 @@ def playRound(player, words, all_words, settings):
         player_guess = input("Enter your valid guess: ") 
         #print("player guess",player_guess)
         if player_guess == ranWord:
-            player_guess_obj = WordleWord(player_guess)              
-            alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
+            player_guess_obj = wordleword(player_guess)              
+            alphaObj = wordleword("abcdefghijklmnopqrstuvwxyz")
             markGuess(ranWord, player_guess_obj, alphaObj)
             print(str(guess_list[i]) + ":",player_guess_obj)
             print(" Alphabet ",alphaObj)
@@ -93,8 +94,8 @@ def playRound(player, words, all_words, settings):
                     player_guess = input("Please guess a proper 5 letter valid word: ")
             else:
                 #print("player guess in else",player_guess)
-                player_guess_obj = WordleWord(player_guess)              
-                alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
+                player_guess_obj = wordleword(player_guess)              
+                alphaObj = wordleword("abcdefghijklmnopqrstuvwxyz")
                 markGuess(ranWord, player_guess_obj, alphaObj)
                 print(str(guess_list[i]) + ":",player_guess_obj)
                 print(" Alphabet ",alphaObj)
@@ -121,7 +122,7 @@ def playWordle():
   
 
     #-NOTE-This is the intro sequence that we created as a little easter egg
-
+    gui()
     print("Let's play the game of Wordle!!")
     name = input("Enter your name: ")
 
