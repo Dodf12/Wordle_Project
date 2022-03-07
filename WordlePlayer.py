@@ -27,7 +27,7 @@ import math
 #      5: # 0
 #      6: # 0
 #=============
-from Player import Player
+from player import Player
 
 # TODO - make WordlePlayer
 class WordlePlayer(Player):

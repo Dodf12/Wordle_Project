@@ -10,10 +10,10 @@
 #    setMisplaced(pos) - integer - set character are pos misplaced and colors accordingly
 #    setNotUsed(pos) - integer - set character are pos misplaced and colors accordingly
 #===========================================================================
-from FancyWord import FancyWord
+from fancyword import FancyWord
 
 # TODO - make WordleWord
-class wordleword(FancyWord):
+class WordleWord(FancyWord):
     def __init__(self, w):
         super().__init__(w)           
     def setCorrect(self,pos):

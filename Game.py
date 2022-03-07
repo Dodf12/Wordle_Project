@@ -2,10 +2,10 @@
 import string
 import sys #used to forcibly quit program
 from Setting import Setting
-from WordBank import WordBank
-from wordleword import wordleword
-from WordlePlayer import WordlePlayer
-from FancyWord import FancyWord
+from wordbank import WordBank
+from wordleword import WordleWord
+from wordleplayer import WordlePlayer
+from fancyword import FancyWord
 
 # testing github
 
@@ -68,14 +68,14 @@ def playRound(player, words, all_words, settings):
     print(ranWord)
     guess_list = [1,2,3,4,5,6]
     # ===== REAL CODE< DO NOT TOUCH>
-    alphaObj = wordleword("abcdefghijklmnopqrstuvwxyz")
+    alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
 
     i = 0
     guessObjList = []
     while i < 6:
         player_guess = input("Enter your guess!: ") 
         
-        player_guess_obj = wordleword(player_guess)  
+        player_guess_obj = WordleWord(player_guess)  
 
         guessObjList.append(player_guess_obj)
         print("\n")
@@ -116,37 +116,8 @@ def playRound(player, words, all_words, settings):
                 i+=1
     print("Sorry, you weren't able to guess the word within the allowed number of attempts")
     print("The correct word was: " + ranWord )
-    #
-    #  for i in range(6):             #Game has six rounds, so it is looping six times                                                   
-    #     player_guess = input("Enter your guess!: ")  
+
   
-    #     if player_guess == ranWord:
-    #         player_guess_obj = WordleWord(player_guess)              
-            
-    #         markGuess(ranWord, player_guess_obj, alphaObj)
-    #         print(str(guess_list[i]) + ":",player_guess_obj)
-    #         print(" Alphabet ",alphaObj)
-    #         print("Congratulations! You have guessed the correct word")
-    #         player[0].updateStats(True,1)
-    #         return        
-    #     else:
-    #         if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
-    #             while len(player_guess) != 5:
-    #                 player_guess = input("Please guess a proper 5 letter valid word: ")
-
-    #         else:
-                
-    #             player_guess_obj = WordleWord(player_guess)              
-    #             markGuess(ranWord, player_guess_obj, alphaObj)
-    #             print(str(guess_list[i]) + ":",player_guess_obj)
-    #             print(" Alphabet ",alphaObj)
-    # print("Sorry, you weren't able to guess the word within the allowed number of attempts")
-    # print("The correct word was: " + ranWord )
-
-
-
-
-    
 
 def playWordle():
 
@@ -212,8 +183,11 @@ def playWordle():
     
 
 
+def main():
+    playWordle()
 
-playWordle()
+if __name__ == "__main__":
+     main()   
 # word = "candy"
 # guess = WordleWord("crane")
 # alpha = WordleWord("abcdefghijklmnopqrstuvwxyz")
