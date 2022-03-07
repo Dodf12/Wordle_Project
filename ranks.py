@@ -36,7 +36,7 @@ class ranks:
     elif points >= 0:
         rank = "Bronze 1"
     elif points <= -1:
-        rank = "How do you lose your first game smh"  
+        rank = "How you so bad that you have a negative score ;-;"
     else:
         print("You broke the system congrats u nerd")
         

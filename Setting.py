@@ -33,4 +33,3 @@ class Setting:
         else:
             return False
 
-# testing
