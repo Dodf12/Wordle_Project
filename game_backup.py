@@ -3,7 +3,7 @@ import string
 import sys #used to forcibly quit program
 from Setting import Setting
 from WordBank import WordBank
-from wordleword import WordleWord
+from wordleword import wordleword
 from WordlePlayer import WordlePlayer
 from FancyWord import FancyWord
 
@@ -68,14 +68,14 @@ def playRound(player, words, all_words, settings):
     print(ranWord)
     guess_list = [1,2,3,4,5,6]
     # ===== REAL CODE< DO NOT TOUCH>
-    alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
+    alphaObj = wordleword("abcdefghijklmnopqrstuvwxyz")
 
     i = 0
     guessObjList = []
     while i < 6:
         player_guess = input("Enter your guess!: ") 
         
-        player_guess_obj = WordleWord(player_guess)  
+        player_guess_obj = wordleword(player_guess)  
 
         guessObjList.append(player_guess_obj)
         print("\n")
