@@ -3,7 +3,7 @@ import string
 import sys #used to forcibly quit program
 from Setting import Setting
 from WordBank import WordBank
-from WordleWord import WordleWord
+from wordleword import WordleWord
 from WordlePlayer import WordlePlayer
 from FancyWord import FancyWord
 
