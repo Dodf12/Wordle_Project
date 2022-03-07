@@ -140,7 +140,7 @@ def playWordle():
   
 
     #-NOTE-This is the intro sequence that we created as a little easter egg
-
+    gui()
     print("Let's play the game of Wordle!!")
     name = input("Enter your name: ")
     print("")
