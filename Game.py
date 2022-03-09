@@ -74,6 +74,13 @@ def playRound(player, words, all_words, settings):
     guessObjList = []
     while i < 6:
         player_guess = input("Enter your guess!: ") 
+        if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
+            while len(player_guess) != 5 or not all_words.contains(player_guess):
+                print("Our system has detected that you have given an incorrect word: ")
+                player_guess = input("Please guess a valid 5 letter word: ")
+                i += 0
+        if len(player_guess) == 5 and all_words.contains(player_guess):
+            player_guess = player_guess
         
         player_guess_obj = WordleWord(player_guess)  
 
@@ -92,13 +99,11 @@ def playRound(player, words, all_words, settings):
             print("Congratulations! You have guessed the correct word")
             player[0].updateStats(True,1)
             return  
-        else:
-            if len(player_guess) != 5 or not all_words.contains(player_guess):  #checks if word doesn't have 5 letters
-                while len(player_guess) != 5:
-                    player_guess = input("Please guess a proper 5 letter valid word: ")
-                    i += 0
 
-            else:
+            
+
+
+        else:
                     
                             
                 markGuess(ranWord, player_guess_obj, alphaObj)
