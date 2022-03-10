@@ -73,7 +73,7 @@ class WordlePlayer(Player):
         return self.maxstreak
     
     def guessDist(self): #prints guess distribution stats
-        #These variables keeep track of how many tries player attempted befor win
+        # #These variables keeep track of how many tries player attempted befor win
 
         one_try = 0 
         two_try = 0
@@ -96,71 +96,45 @@ class WordlePlayer(Player):
                 six_try = six_try + 1
 
         x = [one_try, two_try, three_try, four_try, five_try, six_try]
-        index_list = x #in order to get index
+        print(x[0])
+        print(x[1])
+        print(x[2])
+        print(x[3])
+        print(x[4])
+        print(x[5])
+        # index_list = x #in order to get index
 
-        barlist = ['1', '2', '3', '4', '5', '6']
-        print("Guess Distribution")     
-        #getting the largest numbers in the "x" list and getting their indexes
-        largest = max(x)  
-        largest_index = index_list.index(largest)
-        x.remove(largest)
+        # barlist = ['1', '2', '3', '4', '5', '6']
+        # print("Guess Distribution")     
+        # #getting the largest numbers in the "x" list and getting their indexes
+        # largest = max(x)  
+        # largest_index = index_list.index(largest)
+        # x.remove(largest)
         
-        second_largest = max(x)
-        second_largest_index = index_list.index(second_largest)
-        x.remove(second_largest)
+        # second_largest = max(x)
+        # second_largest_index = index_list.index(second_largest)
+        # x.remove(second_largest)
        
-        third_largest = max(x)
-        third_largest_index = index_list.index(third_largest)
-        x.remove(third_largest)
+        # third_largest = max(x)
+        # third_largest_index = index_list.index(third_largest)
+        # x.remove(third_largest)
         
-        fourth_largest = max(x)
-        fourth_largest_index = index_list.index(fourth_largest)
-        x.remove(fourth_largest)
+        # fourth_largest = max(x)
+        # fourth_largest_index = index_list.index(fourth_largest)
+        # x.remove(fourth_largest)
         
-        fifth_largest = max(x)
-        fifth_largest_index = index_list.index(fifth_largest)
-        x.remove(fifth_largest)
+        # fifth_largest = max(x)
+        # fifth_largest_index = index_list.index(fifth_largest)
+        # x.remove(fifth_largest)
        
-        sixth_largest = max(x)
-        sixth_largest_index = index_list.index(sixth_largest)
-        x.remove(sixth_largest)
-        #printin second largest
+        # sixth_largest = max(x)
+        # sixth_largest_index = index_list.index(sixth_largest)
+        # x.remove(sixth_largest)
+        # #printin second largest
        
-        for idx in range(21):
-            print("#", end='')
-        print(" " + str(largest), end="")
 
-        print("")
+        # print(str(largest_index + 1) + ": " +"####################" + " " + str(largest), end="")
 
-        for idx in range(17):
-            print("#", end='')
-        print(" " + str(second_largest), end="")
-
-        print("")
-
-        for idx in range(13):
-            print("#", end='')
-        print(" " + str(third_largest), end="")
-
-        print("")
-
-        for idx in range(9):
-            print("#", end='')
-        print(" " + str(fourth_largest), end="")
-
-        print("")
-
-        for idx in range(5):
-            print("#", end='')
-        print(" " + str(fifth_largest), end="")
-
-        print("")
-
-        for idx in range(1):
-            print("#", end='')
-        print(" " + str(sixth_largest), end="")
-
-        print("")
 
 
 
@@ -172,18 +146,18 @@ class WordlePlayer(Player):
         self.guessDist()
 
 
-p = WordlePlayer("Mark", 6) 
-p.updateStats(True, 3) 
-p.updateStats(True, 3) 
-p.updateStats(True, 4) 
-p.updateStats(False, 0) 
-p.updateStats(True, 5) 
-p.updateStats(True, 5) 
-p.updateStats(True, 3) 
-p.updateStats(True, 2) 
-p.updateStats(False, 20) 
-p.updateStats(True, 2) 
-p.updateStats(True, 3) 
+# p = WordlePlayer("Mark", 6) 
+# p.updateStats(True, 3) 
+# p.updateStats(True, 3) 
+# p.updateStats(True, 4) 
+# p.updateStats(False, 0) 
+# p.updateStats(True, 5) 
+# p.updateStats(True, 5) 
+# p.updateStats(True, 3) 
+# p.updateStats(True, 2) 
+# p.updateStats(False, 20) 
+# p.updateStats(True, 2) 
+# p.updateStats(True, 3) 
 
-p.displayStats()
-p.winPercentage()
+# p.displayStats()
+# p.winPercentage()
