@@ -82,20 +82,21 @@ class WordlePlayer(Player):
         five_try = 0
         six_try = 0
         for idx in range(len(self.current_tries)):           
-            if self.current_tries[idx] == 1:
+            if self.current_tries[idx] == 0:
                 one_try = one_try + 1
-            elif self.current_tries[idx] == 2:
+            elif self.current_tries[idx] == 1:
                 two_try = two_try +  1
-            elif self.current_tries[idx] == 3:
+            elif self.current_tries[idx] == 2:
                 three_try = three_try + 1
-            elif self.current_tries[idx] == 4:
+            elif self.current_tries[idx] == 3:
                 four_try = four_try + 1
-            elif self.current_tries[idx] == 5:
+            elif self.current_tries[idx] == 4:
                 five_try = five_try + 1
-            elif self.current_tries[idx] == 6:
+            elif self.current_tries[idx] == 5:
                 six_try = six_try + 1
 
         x = [one_try, two_try, three_try, four_try, five_try, six_try]
+<<<<<<< HEAD
         print(x[0])
         print(x[1])
         print(x[2])
@@ -107,6 +108,33 @@ class WordlePlayer(Player):
         # barlist = ['1', '2', '3', '4', '5', '6']
         # print("Guess Distribution")     
         # #getting the largest numbers in the "x" list and getting their indexes
+=======
+        index_list = x #in order to get index
+
+        barlist = ['1', '2', '3', '4', '5', '6']
+        print("Guess Distribution")     
+        #getting the largest numbers in the "x" list and getting their indexes
+        print(x[0],x[1],x[2],x[3],x[4],x[5])
+        i=0
+        while i < 6:
+            if (x[i]==0):
+                print (i+1,": # ", x[i])
+            elif (x[i]==1):
+                print (i+1,": ##### ", x[i]) 
+            elif (x[i]==2): 
+                print (i+1, ": ######### ", x[i])         
+            elif (x[i]==3): 
+                print (i+1, ": ############# ", x[i])     
+            elif (x[i]==4): 
+                print (i+1, ": ################# ", x[i])   
+            elif (x[i]==5): 
+                print (i+1, ": ##################### ", x[i])                           
+            i=i+1
+        
+        print(self.current_tries)
+
+
+>>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
         # largest = max(x)  
         # largest_index = index_list.index(largest)
         # x.remove(largest)
@@ -130,11 +158,51 @@ class WordlePlayer(Player):
         # sixth_largest = max(x)
         # sixth_largest_index = index_list.index(sixth_largest)
         # x.remove(sixth_largest)
+<<<<<<< HEAD
         # #printin second largest
        
 
         # print(str(largest_index + 1) + ": " +"####################" + " " + str(largest), end="")
 
+=======
+
+       
+        # for idx in range(21):
+        #     print("#", end='')
+        # print(" " + str(largest), end="")
+
+        # print("")
+
+        # for idx in range(17):
+        #     print("#", end='')
+        # print(" " + str(second_largest), end="")
+
+        # print("")
+
+        # for idx in range(13):
+        #     print("#", end='')
+        # print(" " + str(third_largest), end="")
+
+        # print("")
+
+        # for idx in range(9):
+        #     print("#", end='')
+        # print(" " + str(fourth_largest), end="")
+
+        # print("")
+
+        # for idx in range(5):
+        #     print("#", end='')
+        # print(" " + str(fifth_largest), end="")
+
+        # print("")
+
+        # for idx in range(1):
+        #     print("#", end='')
+        # print(" " + str(sixth_largest), end="")
+
+        # print("")
+>>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
 
 
 
@@ -146,6 +214,7 @@ class WordlePlayer(Player):
         self.guessDist()
 
 
+<<<<<<< HEAD
 # p = WordlePlayer("Mark", 6) 
 # p.updateStats(True, 3) 
 # p.updateStats(True, 3) 
@@ -161,3 +230,6 @@ class WordlePlayer(Player):
 
 # p.displayStats()
 # p.winPercentage()
+=======
+
+>>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
