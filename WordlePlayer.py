@@ -96,20 +96,37 @@ class WordlePlayer(Player):
                 six_try = six_try + 1
 
         x = [one_try, two_try, three_try, four_try, five_try, six_try]
+        index_list = x #in order to get index
 
         barlist = ['1', '2', '3', '4', '5', '6']
         print("Guess Distribution")     
-        #printing largest wins (#'s)
-        largest = max(x) 
-
-        for idx in(range(21)):
-            print("#", end="")
-        print(" " + str(x[0]), end="")
-
-        print("")
+        #getting the largest numbers in the "x" list and getting their indexes
+        largest = max(x)  
+        largest_index = index_list.index(largest)
         x.remove(largest)
         
+        second_largest = max(x)
+        second_largest_index = index_list.index(second_largest)
+        x.remove(second_largest)
+       
+        third_largest = max(x)
+        third_largest_index = index_list.index(third_largest)
+        x.remove(third_largest)
+        
+        fourth_largest = max(x)
+        fourth_largest_index = index_list.index(fourth_largest)
+        x.remove(fourth_largest)
+        
+        fifth_largest = max(x)
+        fifth_largest_index = index_list.index(fifth_largest)
+        x.remove(fifth_largest)
+       
+        sixth_largest = max(x)
+        sixth_largest_index = index_list.index(sixth_largest)
+        x.remove(sixth_largest)
         #printin second largest
+
+        
 
 
 

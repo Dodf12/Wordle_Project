@@ -4,7 +4,7 @@ import sys #used to forcibly quit program
 from Setting import Setting
 from WordBank import WordBank
 from wordleword import wordleword
-from WordlePlayer import WordlePlayer
+from wordleplayer import WordlePlayer
 from FancyWord import FancyWord
 
 # testing github

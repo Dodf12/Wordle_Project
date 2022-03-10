@@ -1,7 +1,7 @@
    
 import string
 import sys #used to forcibly quit program
-from Setting import Setting
+from setting import Setting
 from wordbank import WordBank
 from wordleword import WordleWord
 from wordleplayer import WordlePlayer
