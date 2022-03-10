@@ -20,17 +20,14 @@ class WordleWord(FancyWord):
         self.setColorAt(pos, "green")
     def setMisplaced(self,pos):
         self.setColorAt(pos, "yellow")
-    def setUnused(self,pos):
+    def setNotUsed(self,pos):
         self.setColorAt(pos, "gray")
     def isCorrect(self,pos):
-        if self.colorAt(pos, "green"):
-            return True          
-    def isMisplace(self,pos):
-        if self.colorAt(pos, "yellow"):
-            return True
-    def isUnUsed(self,pos):
-        if self.colorAt(pos, "blue"):
-            return True
+        return self.colorAt(pos) == "green"         
+    def isMisplaced(self,pos):
+        return self.colorAt(pos) == "yellow"
+    def isNotUsed(self,pos):
+        return self.colorAt(pos) == "gray"
 
 
 

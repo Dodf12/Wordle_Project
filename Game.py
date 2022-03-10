@@ -57,10 +57,10 @@ def markGuess(word, guess, alphabet):
                     g=guess.getWord()
                     break
                 if (g[idx] != w[jdx]):  #marks gray
-                    guess.setUnused(idx)
+                    guess.setNotUsed(idx)
 
                     alphaidx= alphabet.getWord().find(g[idx])
-                    alphabet.setUnused(alphaidx)
+                    alphabet.setNotUsed(alphaidx)
                     g=guess.getWord()
                     
 def playRound(player, words, all_words, settings):
@@ -121,6 +121,7 @@ def playRound(player, words, all_words, settings):
                 i+=1
     print("Sorry, you weren't able to guess the word within the allowed number of attempts")
     print("The correct word was: " + ranWord )
+    player[0].updateStats(False, 1)
 
   
 
@@ -174,7 +175,7 @@ def playWordle():
 
     
     
-    if play_again == "no":
+    if play_again.lower() == "no":
         player.displayStats()
         return
 
@@ -192,7 +193,7 @@ def main():
     playWordle()
 
 if __name__ == "__main__":
-     main()   
+    main()   
 # word = "candy"
 # guess = WordleWord("crane")
 # alpha = WordleWord("abcdefghijklmnopqrstuvwxyz")

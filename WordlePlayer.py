@@ -59,7 +59,7 @@ class WordlePlayer(Player):
             self.gamesplayed += 1
             
     
-    def winPercent(self):
+    def winPercentage(self):
         winpercent = ""
         a = float(self.wins / self.gamesplayed) * 100
         self.winpercent = math.ceil(a)
@@ -98,75 +98,41 @@ class WordlePlayer(Player):
         x = [one_try, two_try, three_try, four_try, five_try, six_try]
 
         barlist = ['1', '2', '3', '4', '5', '6']
-        print("Guess Distribution")      
-        
-        #print bars
-        print(barlist[0] + ": ", end="")
-        for idx in(range(1)):
+        print("Guess Distribution")     
+        #printing largest wins (#'s)
+        largest = max(x) 
+
+        for idx in(range(21)):
             print("#", end="")
         print(" " + str(x[0]), end="")
 
         print("")
-
-        print(barlist[1] + ": ", end="")
-        for idx in(range(x[1])):
-            print("#", end="")
-        print(" " + str(x[1]), end="")
+        x.remove(largest)
         
-
-        print("")
-
-        print(barlist[2] + ": ", end="")
-        for idx in(range(x[2])):
-            print("#", end="")
-        print(" " + str(x[2]), end="")
-
-        print("")
-
-        print(barlist[3] + ": ", end="")
-        for idx in(range(x[3])):
-            print("#", end="")
-        print(" " + str(x[3]), end="")
-
-        print("")
-
-        print(barlist[4] + ": ", end="")
-        for idx in(range(x[4])):
-            print("#", end="")
-        print(" " + str(x[4]), end="")
-        
-        print("")
-
-        print(barlist[5] + ": ", end="")        
-        for idx in(range(x[5])):
-            print("#", end="")
-        print(" " + str(x[5]), end="")
-        
-        print("")
-
+        #printin second largest
 
 
 
     def displayStats(self):
         print("Games Played: " + str(self.gamesplayed))
-        print("Win %: " + self.winPercent() + "%")
+        print("Win %: " + self.winPercentage() + "%")
         print("Current Streak: " + str(self.winstreak))
         print("Max Streak: " + str(self.maxstreak))
         self.guessDist()
 
 
 p = WordlePlayer("Mark", 6) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 4) 
-# p.updateStats(False, 0) 
-# p.updateStats(True, 5) 
-# p.updateStats(True, 5) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 2) 
-# p.updateStats(False, 20) 
-# p.updateStats(True, 2) 
-# p.updateStats(True, 3) 
+p.updateStats(True, 3) 
+p.updateStats(True, 3) 
+p.updateStats(True, 4) 
+p.updateStats(False, 0) 
+p.updateStats(True, 5) 
+p.updateStats(True, 5) 
+p.updateStats(True, 3) 
+p.updateStats(True, 2) 
+p.updateStats(False, 20) 
+p.updateStats(True, 2) 
+p.updateStats(True, 3) 
 
-# p.displayStats()
-# p.winPercent()
+p.displayStats()
+p.winPercentage()
