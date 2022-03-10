@@ -82,17 +82,17 @@ class WordlePlayer(Player):
         five_try = 0
         six_try = 0
         for idx in range(len(self.current_tries)):           
-            if self.current_tries[idx] == 1:
+            if self.current_tries[idx] == 0:
                 one_try = one_try + 1
-            elif self.current_tries[idx] == 2:
+            elif self.current_tries[idx] == 1:
                 two_try = two_try +  1
-            elif self.current_tries[idx] == 3:
+            elif self.current_tries[idx] == 2:
                 three_try = three_try + 1
-            elif self.current_tries[idx] == 4:
+            elif self.current_tries[idx] == 3:
                 four_try = four_try + 1
-            elif self.current_tries[idx] == 5:
+            elif self.current_tries[idx] == 4:
                 five_try = five_try + 1
-            elif self.current_tries[idx] == 6:
+            elif self.current_tries[idx] == 5:
                 six_try = six_try + 1
 
         x = [one_try, two_try, three_try, four_try, five_try, six_try]
@@ -101,66 +101,86 @@ class WordlePlayer(Player):
         barlist = ['1', '2', '3', '4', '5', '6']
         print("Guess Distribution")     
         #getting the largest numbers in the "x" list and getting their indexes
-        largest = max(x)  
-        largest_index = index_list.index(largest)
-        x.remove(largest)
+        print(x[0],x[1],x[2],x[3],x[4],x[5])
+        i=0
+        while i < 6:
+            if (x[i]==0):
+                print (i+1,": # ", x[i])
+            elif (x[i]==1):
+                print (i+1,": ##### ", x[i]) 
+            elif (x[i]==2): 
+                print (i+1, ": ######### ", x[i])         
+            elif (x[i]==3): 
+                print (i+1, ": ############# ", x[i])     
+            elif (x[i]==4): 
+                print (i+1, ": ################# ", x[i])   
+            elif (x[i]==5): 
+                print (i+1, ": ##################### ", x[i])                           
+            i=i+1
         
-        second_largest = max(x)
-        second_largest_index = index_list.index(second_largest)
-        x.remove(second_largest)
-       
-        third_largest = max(x)
-        third_largest_index = index_list.index(third_largest)
-        x.remove(third_largest)
+        print(self.current_tries)
+
+
+        # largest = max(x)  
+        # largest_index = index_list.index(largest)
+        # x.remove(largest)
         
-        fourth_largest = max(x)
-        fourth_largest_index = index_list.index(fourth_largest)
-        x.remove(fourth_largest)
+        # second_largest = max(x)
+        # second_largest_index = index_list.index(second_largest)
+        # x.remove(second_largest)
+       
+        # third_largest = max(x)
+        # third_largest_index = index_list.index(third_largest)
+        # x.remove(third_largest)
         
-        fifth_largest = max(x)
-        fifth_largest_index = index_list.index(fifth_largest)
-        x.remove(fifth_largest)
+        # fourth_largest = max(x)
+        # fourth_largest_index = index_list.index(fourth_largest)
+        # x.remove(fourth_largest)
+        
+        # fifth_largest = max(x)
+        # fifth_largest_index = index_list.index(fifth_largest)
+        # x.remove(fifth_largest)
        
-        sixth_largest = max(x)
-        sixth_largest_index = index_list.index(sixth_largest)
-        x.remove(sixth_largest)
-        #printin second largest
+        # sixth_largest = max(x)
+        # sixth_largest_index = index_list.index(sixth_largest)
+        # x.remove(sixth_largest)
+
        
-        for idx in range(21):
-            print("#", end='')
-        print(" " + str(largest), end="")
+        # for idx in range(21):
+        #     print("#", end='')
+        # print(" " + str(largest), end="")
 
-        print("")
+        # print("")
 
-        for idx in range(17):
-            print("#", end='')
-        print(" " + str(second_largest), end="")
+        # for idx in range(17):
+        #     print("#", end='')
+        # print(" " + str(second_largest), end="")
 
-        print("")
+        # print("")
 
-        for idx in range(13):
-            print("#", end='')
-        print(" " + str(third_largest), end="")
+        # for idx in range(13):
+        #     print("#", end='')
+        # print(" " + str(third_largest), end="")
 
-        print("")
+        # print("")
 
-        for idx in range(9):
-            print("#", end='')
-        print(" " + str(fourth_largest), end="")
+        # for idx in range(9):
+        #     print("#", end='')
+        # print(" " + str(fourth_largest), end="")
 
-        print("")
+        # print("")
 
-        for idx in range(5):
-            print("#", end='')
-        print(" " + str(fifth_largest), end="")
+        # for idx in range(5):
+        #     print("#", end='')
+        # print(" " + str(fifth_largest), end="")
 
-        print("")
+        # print("")
 
-        for idx in range(1):
-            print("#", end='')
-        print(" " + str(sixth_largest), end="")
+        # for idx in range(1):
+        #     print("#", end='')
+        # print(" " + str(sixth_largest), end="")
 
-        print("")
+        # print("")
 
 
 
@@ -172,18 +192,4 @@ class WordlePlayer(Player):
         self.guessDist()
 
 
-p = WordlePlayer("Mark", 6) 
-p.updateStats(True, 3) 
-p.updateStats(True, 3) 
-p.updateStats(True, 4) 
-p.updateStats(False, 0) 
-p.updateStats(True, 5) 
-p.updateStats(True, 5) 
-p.updateStats(True, 3) 
-p.updateStats(True, 2) 
-p.updateStats(False, 20) 
-p.updateStats(True, 2) 
-p.updateStats(True, 3) 
 
-p.displayStats()
-p.winPercentage()

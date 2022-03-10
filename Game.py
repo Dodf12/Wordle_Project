@@ -97,7 +97,7 @@ def playRound(player, words, all_words, settings):
 
             print(" Alphabet ",alphaObj,"\n")
             print("Congratulations! You have guessed the correct word")
-            player[0].updateStats(True,1)
+            player[0].updateStats(True, i)
             return  
 
             
@@ -121,7 +121,7 @@ def playRound(player, words, all_words, settings):
                 i+=1
     print("Sorry, you weren't able to guess the word within the allowed number of attempts")
     print("The correct word was: " + ranWord )
-    player[0].updateStats(False, 1)
+    player[0].updateStats(False, 0)
 
   
 
