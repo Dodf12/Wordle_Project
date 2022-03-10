@@ -125,8 +125,42 @@ class WordlePlayer(Player):
         sixth_largest_index = index_list.index(sixth_largest)
         x.remove(sixth_largest)
         #printin second largest
+       
+        for idx in range(21):
+            print("#", end='')
+        print(" " + str(largest), end="")
 
-        
+        print("")
+
+        for idx in range(17):
+            print("#", end='')
+        print(" " + str(second_largest), end="")
+
+        print("")
+
+        for idx in range(13):
+            print("#", end='')
+        print(" " + str(third_largest), end="")
+
+        print("")
+
+        for idx in range(9):
+            print("#", end='')
+        print(" " + str(fourth_largest), end="")
+
+        print("")
+
+        for idx in range(5):
+            print("#", end='')
+        print(" " + str(fifth_largest), end="")
+
+        print("")
+
+        for idx in range(1):
+            print("#", end='')
+        print(" " + str(sixth_largest), end="")
+
+        print("")
 
 
 
