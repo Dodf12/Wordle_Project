@@ -113,7 +113,7 @@ class WordlePlayer(Player):
             elif (x[i]==3): 
                 print (i+1, ": ############# ", x[i])     
             elif (x[i]==4): 
-                print (i+), ": ################# ", x[i])   
+                print (i+1, ": ################# ", x[i])   
             elif (x[i]==5): 
                 print (i+1, ": ##################### ", x[i])                           
             i=i+1
