@@ -40,9 +40,8 @@ def markGuess(word, guess, alphabet):
 
                 alphaidx= alphabet.getWord().find(g[idx])             #finds index of correct letter in the alphabet object
                 alphabet.setCorrect(alphaidx)
-                g=guess.getWord()
-                break           
-    
+                g=guess.getWord()         
+                break
             if (g[idx] == w[jdx]):         #makrs letter green
                 guess.setMisplaced(idx)
 
@@ -54,6 +53,7 @@ def markGuess(word, guess, alphabet):
                 alphaidx= alphabet.getWord().find(g[idx])
                 alphabet.setNotUsed(alphaidx)
                 g=guess.getWord()
+                
                     
 def playRound(player, words, all_words, settings):
     ranWord = words.getRandom() #getting random word
@@ -90,7 +90,7 @@ def playRound(player, words, all_words, settings):
             print(" Alphabet ",alphaObj,"\n")
             print("Congratulations! You have guessed the correct word")
             player[0].updateStats(True, i)
-            return None
+            
 
             
 
@@ -188,15 +188,15 @@ def playWordle():
 # print(alphabet)
 # print(guess)
 
-player1 = WordlePlayer("Mark", 6)
-player1.updateStats(True, 3)
-player1.updateStats(True, 3)
-player1.updateStats(False, 1000)
-player1.updateStats(True, 2)
-print(player1.gamesPlayed() == 4)
-print(player1.currentStreak() == 1)
-print(player1.maxStreak() == 2)
-print(player1.winPercentage() == 3/4*100)
+# player1 = WordlePlayer("Mark", 6)
+# player1.updateStats(True, 3)
+# player1.updateStats(True, 3)
+# player1.updateStats(False, 1000)
+# player1.updateStats(True, 2)
+# print(player1.gamesPlayed() == 4)
+# print(player1.currentStreak() == 1)
+# print(player1.maxStreak() == 2)
+# print(player1.winPercentage() == 3/4*100)
 # def main():
 #     playWordle()
 
