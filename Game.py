@@ -97,7 +97,11 @@ def playRound(player, words, all_words, settings):
 
             print(" Alphabet ",alphaObj,"\n")
             print("Congratulations! You have guessed the correct word")
+<<<<<<< HEAD
+            player[0].updateStats(True,i)
+=======
             player[0].updateStats(True, i)
+>>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
             return  
 
             
@@ -146,7 +150,7 @@ def playWordle():
     name = input("Enter your name: ")
 
     ready_to_play = input("Welcome " + name + " Do you wish to play? (Enter Yes or No & Please Use Çaps): ") #part 1 of intro, welcoming
-    if ready_to_play == "Yes":
+    if ready_to_play == "yes":
         print("Loading You In To The Game . . .")
     elif ready_to_play == "No":
         print("Exiting You Out Of The Game . . .")
