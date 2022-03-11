@@ -121,7 +121,7 @@ def playRound(player, words, all_words, settings):
                 i+=1
     print("Sorry, you weren't able to guess the word within the allowed number of attempts")
     print("The correct word was: " + ranWord )
-    player[0].updateStats(False, 0)
+    player[0].updateStats(False, 0) #comeayns;dyu
 
   
 
