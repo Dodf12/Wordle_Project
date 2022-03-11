@@ -96,19 +96,6 @@ class WordlePlayer(Player):
                 six_try = six_try + 1
 
         x = [one_try, two_try, three_try, four_try, five_try, six_try]
-<<<<<<< HEAD
-        print(x[0])
-        print(x[1])
-        print(x[2])
-        print(x[3])
-        print(x[4])
-        print(x[5])
-        # index_list = x #in order to get index
-
-        # barlist = ['1', '2', '3', '4', '5', '6']
-        # print("Guess Distribution")     
-        # #getting the largest numbers in the "x" list and getting their indexes
-=======
         index_list = x #in order to get index
 
         barlist = ['1', '2', '3', '4', '5', '6']
@@ -134,7 +121,6 @@ class WordlePlayer(Player):
         print(self.current_tries)
 
 
->>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
         # largest = max(x)  
         # largest_index = index_list.index(largest)
         # x.remove(largest)
@@ -158,13 +144,6 @@ class WordlePlayer(Player):
         # sixth_largest = max(x)
         # sixth_largest_index = index_list.index(sixth_largest)
         # x.remove(sixth_largest)
-<<<<<<< HEAD
-        # #printin second largest
-       
-
-        # print(str(largest_index + 1) + ": " +"####################" + " " + str(largest), end="")
-
-=======
 
        
         # for idx in range(21):
@@ -202,7 +181,6 @@ class WordlePlayer(Player):
         # print(" " + str(sixth_largest), end="")
 
         # print("")
->>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
 
 
 
@@ -214,22 +192,4 @@ class WordlePlayer(Player):
         self.guessDist()
 
 
-<<<<<<< HEAD
-# p = WordlePlayer("Mark", 6) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 4) 
-# p.updateStats(False, 0) 
-# p.updateStats(True, 5) 
-# p.updateStats(True, 5) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 2) 
-# p.updateStats(False, 20) 
-# p.updateStats(True, 2) 
-# p.updateStats(True, 3) 
 
-# p.displayStats()
-# p.winPercentage()
-=======
-
->>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
