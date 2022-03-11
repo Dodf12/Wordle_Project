@@ -56,17 +56,15 @@ class WordlePlayer(Player):
             self.losses+=1
             self.total_tries = tries + 1
             self.winstreak = 0
-            self.gamesplayed += 1
+            self.gamesplayed = self.gamesplayed + 1
             
     
     def winPercentage(self):
         winpercent = ""
         a = float(self.wins / self.gamesplayed) * 100
-        self.winpercent = math.ceil(a)
-        winpercent = str(self.winpercent)
-        return winpercent
+        return a
     def gamesPlayed(self):
-        return self.total_tries
+        return self.gamesplayed
     def currentStreak(self):
         return self.winstreak
     def maxStreak(self): 
@@ -82,17 +80,17 @@ class WordlePlayer(Player):
         five_try = 0
         six_try = 0
         for idx in range(len(self.current_tries)):           
-            if self.current_tries[idx] == 0:
+            if self.current_tries[idx] == 1:
                 one_try = one_try + 1
-            elif self.current_tries[idx] == 1:
-                two_try = two_try +  1
             elif self.current_tries[idx] == 2:
-                three_try = three_try + 1
+                two_try = two_try +  1
             elif self.current_tries[idx] == 3:
-                four_try = four_try + 1
+                three_try = three_try + 1
             elif self.current_tries[idx] == 4:
-                five_try = five_try + 1
+                four_try = four_try + 1
             elif self.current_tries[idx] == 5:
+                five_try = five_try + 1
+            elif self.current_tries[idx] == 6:
                 six_try = six_try + 1
 
         x = [one_try, two_try, three_try, four_try, five_try, six_try]
@@ -113,149 +111,80 @@ class WordlePlayer(Player):
         
         i=0
         if ( len(unique_x) > 2):
-            #print("inside more",x)
             while i < 6:
                 
                 if (x[i]==0):
-                    print (i+1,": # ", x[i])
+                    print (" " + str(i+1)+": #"+ " " + str(x[i]))
                 elif (x[i]==1):
-                    print (i+1,": ##### ", x[i]) 
+                    print (" " + str(i+1) +": #####" +" " + str(x[i])) 
+
                 elif (x[i]==2): 
-                    print (i+1, ": ######### ", x[i])         
+                    print (" " + str(i+1) +": #########"+ str(x[i]))         
                 elif (x[i]==3): 
-                    print (i+1, ": ############# ", x[i])     
+                    print (" " + str(i+1) + ": #############"+ str(x[i]))     
                 elif (x[i]==4): 
-                    print (i+1, ": ################# ", x[i])   
+                    print (" " + str(i+1) + ": #################"+ str(x[i]))   
                 elif (x[i]==5): 
-                    print (i+1, ": ##################### ", x[i])                           
+                    print (" " + str(i+1) +": #####################"+ str(x[i]))                           
                 i=i+1
 
         elif ( len(unique_x) == 1 ):
-            #print("inside more",unique_x)
             while i < 6:
                 
                 if (x[i]==0):
                     if (x[i]==y[5]):
-                        print (i+1,": ##################### ", x[i])
+                        print (" " + str(i+1) +": ##################### " + str(x[i]))
                     else:
-                        print (i+1,": # ", x[i])
+                        print (" " + str(i+1) +": # "+ str(x[i]))
                 elif (x[i]==1):
                     if (x[i]==y[5]):
-                        print (i+1,": ##################### ", x[i])
+                        print (" " + str(i+1) +": ##################### " +  str(x[i]))
                     else:
-                        print (i+1,": ##### ", x[i])                                       
+                        print (" " + str(i+1) +": ##### "+ str(x[i]))                                       
                 elif (x[i]==2): 
                     if (x[i]==y[5]):
-                        print (i+1,": ##################### ", x[i])
-                    else:                   
-                        print (i+1, ": ######### ", x[i])         
+                        print (" " + str(i+1) +": ##################### " + str(x[i]))
+                    else:                  
+                        print (" " + str(i+1) +": ######### "+" " +   str(x[i]))         
                 elif (x[i]==3): 
                     if (x[i]==y[5]):
-                        print (i+1,": ##################### ", x[i])
+                        print (" " + str(i+1) +": ##################### " +  str(x[i]))
                     else:
-                        print (i+1, ": ############# ", x[i])     
+                        print (" " + str(i+1) + ": ############# "+ str(x[i]))     
                 elif (x[i]==4):
                     if (x[i]==y[5]):
-                        print (i+1,": ##################### ", x[i])
+                        print (" " + str(i+1) +": ##################### " + str(x[i]))
                     else:                     
-                        print (i+1, ": ################# ", x[i])   
+                        print (" " + str(i+1) +": ################# "+ str(x[i]))   
                 elif (x[i]==5): 
                     if (x[i]==y[5]):
-                        print (i+1,": ##################### ", x[i])
+                        print (" " + str(i+1) +": ##################### "+ str(x[i]))
                     else:
-                        print (i+1, ": ##################### ", x[i])                           
+                        print (" " + str(i+1) +": ##################### "+ str(x[i]))                           
                 i=i+1
         
-        print(self.current_tries)
 
-
-        # largest = max(x)  
-        # largest_index = index_list.index(largest)
-        # x.remove(largest)
-        
-        # second_largest = max(x)
-        # second_largest_index = index_list.index(second_largest)
-        # x.remove(second_largest)
-       
-        # third_largest = max(x)
-        # third_largest_index = index_list.index(third_largest)
-        # x.remove(third_largest)
-        
-        # fourth_largest = max(x)
-        # fourth_largest_index = index_list.index(fourth_largest)
-        # x.remove(fourth_largest)
-        
-        # fifth_largest = max(x)
-        # fifth_largest_index = index_list.index(fifth_largest)
-        # x.remove(fifth_largest)
-       
-        # sixth_largest = max(x)
-        # sixth_largest_index = index_list.index(sixth_largest)
-        # x.remove(sixth_largest)
-
-       
-        # for idx in range(21):
-        #     print("#", end='')
-        # print(" " + str(largest), end="")
-
-        # print("")
-
-        # for idx in range(17):
-        #     print("#", end='')
-        # print(" " + str(second_largest), end="")
-
-        # print("")
-
-        # for idx in range(13):
-        #     print("#", end='')
-        # print(" " + str(third_largest), end="")
-
-        # print("")
-
-        # for idx in range(9):
-        #     print("#", end='')
-        # print(" " + str(fourth_largest), end="")
-
-        # print("")
-
-        # for idx in range(5):
-        #     print("#", end='')
-        # print(" " + str(fifth_largest), end="")
-
-        # print("")
-
-        # for idx in range(1):
-        #     print("#", end='')
-        # print(" " + str(sixth_largest), end="")
-
-        # print("")
 
 
 
     def displayStats(self):
         print("Games Played: " + str(self.gamesplayed))
-        print("Win %: " + self.winPercentage() + "%")
+        print("Win %: " + str(int(self.winPercentage())) + "%")
         print("Current Streak: " + str(self.winstreak))
         print("Max Streak: " + str(self.maxstreak))
         self.guessDist()
 
 
+
+
+
 # p = WordlePlayer("Mark", 6) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 3) 
-# p.updateStats(True, 4) 
-# p.updateStats(False, 0)
-# p.updateStats(True, 5) 
-# p.updateStats(True, 5) 
-# p.updateStats(True, 3) 
 # p.updateStats(True, 2) 
-# p.updateStats(False, 20) 
-# p.updateStats(True, 2) 
-# p.updateStats(True, 3) 
+
 # p.displayStats() 
 
 # p1 = WordlePlayer("Mark", 6) 
-# p1.updateStats(True, 3) 
-# p1.updateStats(True, 0) 
+# p1.updateStats(True, 2) 
+# p1.updateStats(False, 0) 
 
 # p1.displayStats() 
