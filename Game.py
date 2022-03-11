@@ -208,16 +208,8 @@ def playWordle():
 # print(player1.winPercentage() == 3/4*100)
 # print(player1.winPercentage())
 
-word = "abcde"
-alphabet = WordleWord(string.ascii_lowercase)
-guess = WordleWord("acxyz")
-markGuess(word, guess, alphabet)
-print(guess)
-print(alphabet)
+player1 = WordlePlayer("Mark", 6)
+player1.updateStats(True, 2)
 
-#print("****")
 
-guess = WordleWord("mbano")
-markGuess(word, guess, alphabet)
-print(alphabet)
-print(guess)
+player1.displayStats()
