@@ -29,39 +29,31 @@ from fancyword import FancyWord
 
 def markGuess(word, guess, alphabet):
     g = guess.getWord()
-    #string
     w = word 
-    #alphabet obj
-    #a = alphabet.getWord() 
-    #seeing if character in guess algins with character in word
-    #for idx in range(len(g)):
 
 
     for idx in range(len(g)): #using double loop, one for guess and the other for the actual word    
+        for jdx in range(len(w)):
+            a = alphabet.getWord() 
+            if (g[idx] == w[idx]):   #marks letter green
+                guess.setCorrect(idx)
 
-            for jdx in range(len(w)):
-                a = alphabet.getWord() 
-                if (g[idx] == w[idx]):   #marks letter green
-                    guess.setCorrect(idx)
+                alphaidx= alphabet.getWord().find(g[idx])             #finds index of correct letter in the alphabet object
+                alphabet.setCorrect(alphaidx)
+                g=guess.getWord()
+                break           
+    
+            if (g[idx] == w[jdx]):         #makrs letter green
+                guess.setMisplaced(idx)
 
-                    alphaidx= alphabet.getWord().find(g[idx])             #finds index of correct letter in the alphabet object
-                    alphabet.setCorrect(alphaidx)
-                    g=guess.getWord()
-                    break           
-     
-                if (g[idx] == w[jdx]):         #makrs letter green
-                    guess.setMisplaced(idx)
-
-                    alphaidx= alphabet.getWord().find(g[idx])
-                    alphabet.setMisplaced(alphaidx)
-                    g=guess.getWord()
-                    break
-                if (g[idx] != w[jdx]):  #marks gray
-                    guess.setNotUsed(idx)
-
-                    alphaidx= alphabet.getWord().find(g[idx])
-                    alphabet.setNotUsed(alphaidx)
-                    g=guess.getWord()
+                alphaidx= alphabet.getWord().find(g[idx])
+                alphabet.setMisplaced(alphaidx)
+                g=guess.getWord()
+                break
+            if (g[idx] != w[jdx]):  #marks gray
+                alphaidx= alphabet.getWord().find(g[idx])
+                alphabet.setNotUsed(alphaidx)
+                g=guess.getWord()
                     
 def playRound(player, words, all_words, settings):
     ranWord = words.getRandom() #getting random word
@@ -98,7 +90,7 @@ def playRound(player, words, all_words, settings):
             print(" Alphabet ",alphaObj,"\n")
             print("Congratulations! You have guessed the correct word")
             player[0].updateStats(True, i)
-            return  
+            return None
 
             
 
@@ -177,26 +169,36 @@ def playWordle():
     
     if play_again.lower() == "no":
         player.displayStats()
-        return
+
 
     while play_again.lower() == "yes":
         #print("eddumoham")
         playRound(player_list, five_letter_words, all_words, settings)
         #print("pandimoham")
         play_again = input("Would you like to play another round?: ")
+        if play_again.lower() == "no":
+            player.displayStats()
 
 
-    
 
-
-def main():
-    playWordle()
-
-if __name__ == "__main__":
-    main()   
-# word = "candy"
-# guess = WordleWord("crane")
-# alpha = WordleWord("abcdefghijklmnopqrstuvwxyz")
-# markGuess(word, guess, alpha)
+# word = "abcde"
+# alphabet = WordleWord(string.ascii_lowercase)
+# guess = WordleWord("acxyz")
+# markGuess(word, guess, alphabet)
+# print(alphabet)
 # print(guess)
-# print(alpha)
+
+player1 = WordlePlayer("Mark", 6)
+player1.updateStats(True, 3)
+player1.updateStats(True, 3)
+player1.updateStats(False, 1000)
+player1.updateStats(True, 2)
+print(player1.gamesPlayed() == 4)
+print(player1.currentStreak() == 1)
+print(player1.maxStreak() == 2)
+print(player1.winPercentage() == 3/4*100)
+# def main():
+#     playWordle()
+
+# if __name__ == "__main__":
+#     main()   
