@@ -97,11 +97,7 @@ def playRound(player, words, all_words, settings):
 
             print(" Alphabet ",alphaObj,"\n")
             print("Congratulations! You have guessed the correct word")
-<<<<<<< HEAD
-            player[0].updateStats(True,i)
-=======
             player[0].updateStats(True, i)
->>>>>>> fe59cca121a86cbb3fe0d73a26f566e68eb7ca80
             return  
 
             
