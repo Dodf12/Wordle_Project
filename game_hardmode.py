@@ -29,36 +29,58 @@ from fancyword import FancyWord
 #   settings - Settings of game test
 #======
 
-def markGuess(word, guess, alphabet):
-    g = guess.getWord()
-    w = word 
-    a = alphabet.getWord()
+def markGuess(word, guess, alphabet, hardmode):
+    
+    if (hardmode == False):
+        g = guess.getWord()
+        w = word 
+        a = alphabet.getWord()
 
-    for idx in range(len(g)): #using double loop, one for guess and the other for the actual word so            
-        for jdx in range(len(w)): 
-            if (guess.getWord()[idx] == w[idx]):   #marks letter green
-                guess.setCorrect(idx)
+        for idx in range(len(g)): #using double loop, one for guess and the other for the actual word so            
+            for jdx in range(len(w)): 
+                if (guess.getWord()[idx] == w[idx]):   #marks letter green
+                    guess.setCorrect(idx)
 
-                alphaidx= alphabet.getWord().find(guess.getWord()[idx]) #gets word from alphabet object and finds the character at position idx
-                if alphabet.colorAt(alphaidx) != "gray":            #makes sure word is not gray before coloring green
-                    alphabet.setCorrect(alphaidx)
-        
-                    break
-            if (guess.getWord()[idx] == w[jdx]):         #makrs letter yellow
-                guess.setMisplaced(idx)
-                alphaidx= alphabet.getWord().find(guess.getWord()[idx])  
-                if alphabet.colorAt(alphaidx) != "green":                 #makes sure its not green before making yellow  
+                    alphaidx= alphabet.getWord().find(guess.getWord()[idx]) #gets word from alphabet object and finds the character at position idx
+                    if alphabet.colorAt(alphaidx) != "gray":            #makes sure word is not gray before coloring green
+                        alphabet.setCorrect(alphaidx)
+            
+                        break
+                if (guess.getWord()[idx] == w[jdx]):         #makrs letter yellow
+                    guess.setMisplaced(idx)
+                    alphaidx= alphabet.getWord().find(guess.getWord()[idx])  
+                    if alphabet.colorAt(alphaidx) != "green":                 #makes sure its not green before making yellow  
 
-                    alphabet.setMisplaced(alphaidx)
-                    break
-            if (guess.getWord()[idx] != w[jdx]):  #marks gray
-                alphaidx1= alphabet.getWord().find(guess.getWord()[idx])
-                if ((alphabet.colorAt(alphaidx1) != "green") and (alphabet.colorAt(alphaidx1) != "yellow")): #makes sure not green or yellow before passing
-                    alphabet.setNotUsed(alphaidx1)
+                        alphabet.setMisplaced(alphaidx)
+                        break
+                if (guess.getWord()[idx] != w[jdx]):  #marks gray
+                    alphaidx1= alphabet.getWord().find(guess.getWord()[idx])
+                    if ((alphabet.colorAt(alphaidx1) != "green") and (alphabet.colorAt(alphaidx1) != "yellow")): #makes sure not green or yellow before passing
+                        alphabet.setNotUsed(alphaidx1)
+    else:
+        g = guess.getWord()
+        w = word 
+        a = alphabet.getWord()
+
+        for idx in range(len(g)): #using double loop, one for guess and the other for the actual word so            
+            for jdx in range(len(w)): 
+                if (guess.getWord()[idx] == w[idx]):   #marks letter green
+                    guess.setCorrect(idx)
+
+                    alphaidx= alphabet.getWord().find(guess.getWord()[idx]) #gets word from alphabet object and finds the character at position idx
+                    if alphabet.colorAt(alphaidx) != "gray":            #makes sure word is not gray before coloring green
+                        alphabet.setCorrect(alphaidx)
+            
+                        break
+                if (guess.getWord()[idx] != w[jdx]):  #marks gray
+                    alphaidx1= alphabet.getWord().find(guess.getWord()[idx])
+                    if ((alphabet.colorAt(alphaidx1) != "green") and (alphabet.colorAt(alphaidx1) != "yellow")): #makes sure not green or yellow before passing
+                        alphabet.setNotUsed(alphaidx1)        
 
                 
                     
-def playRound(player, words, all_words, settings):
+def playRound(player, words, all_words, settings, hardmode):
+    
     ranWord = words.getRandom() #getting random word
     alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
     hint_check = 0
@@ -81,7 +103,8 @@ def playRound(player, words, all_words, settings):
 
 
         if player_guess == ranWord: #goes here if players's guess is green
-            markGuess(ranWord, player_guess_obj, alphaObj)
+            
+            markGuess(ranWord, player_guess_obj, alphaObj, hardmode)
 
             indexval = 0
             for p in guessObjList:               #making sure it prints all the previous guesses     
@@ -94,7 +117,7 @@ def playRound(player, words, all_words, settings):
             return #in order to exit out of function
         else:
                                            
-                markGuess(ranWord, player_guess_obj, alphaObj)
+                markGuess(ranWord, player_guess_obj, alphaObj, hardmode)
                 indexval = 0
 
                 for p in guessObjList:                   
@@ -133,6 +156,8 @@ def playWordle():
 
     ready_to_play = input("Welcome " + name + " Do you wish to play? (y/n): ") #part 1 of intro, welcoming
     if ready_to_play == "y":
+        hardmode = input("Would you like to activate hard mode?(y/n) There is no turning back from here ") #askss user a one time decision of going to hardmode or not
+
         print("Loading You In To The Game . . .")
         print("")
         print("Ok, you may begin. Please enter your first guess into the following line")
@@ -157,11 +182,17 @@ def playWordle():
     player = WordlePlayer(name, 6)
     player_list = []
     player_list = player_list + [player]
-    # start playing rounds of Wordle
-    playRound(player_list, five_letter_words, all_words, settings)
+    if hardmode == "n":
+        playRound(player_list, five_letter_words, all_words, settings, False)    
+    elif hardmode == "y":
+        # start playing rounds of Wordle
+        playRound(player_list, five_letter_words, all_words, settings, True)
+    
     # Finding out of another round is being player and end game by displaying player stats
     play_again = input("Would you like to play another round?(y/n): ") #asks after first round played by player if more than multiple rounds are played, it shifts to the while loop below
     #play_again_bool = True
+
+
 
     
     
@@ -170,7 +201,11 @@ def playWordle():
 
 
     while play_again.lower() == "y":
-        playRound(player_list, five_letter_words, all_words, settings)
+        if hardmode == "n":
+            playRound(player_list, five_letter_words, all_words, settings, True)    
+        else:
+            # start playing rounds of Wordle
+            playRound(player_list, five_letter_words, all_words, settings, False)
         play_again = input("Would you like to play another round?: ")
         if play_again.lower() == "n":
             player.displayStats()
