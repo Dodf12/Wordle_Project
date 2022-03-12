@@ -190,26 +190,8 @@ def playWordle():
 
 
 
-# def main():
-#     playWordle()
-
-# if __name__ == "__main__":
-#     main()   
-
-# player1 = WordlePlayer("Mark", 6)
-# player1.updateStats(True, 3)
-# player1.updateStats(True, 3)
-# player1.updateStats(False, 1000)
-# player1.updateStats(True, 2)
-
-# print(player1.gamesPlayed() == 4 )
-# print(player1.currentStreak() == 1)
-# print(player1.maxStreak() == 2)
-# print(player1.winPercentage() == 3/4*100)
-# print(player1.winPercentage())
 
 player1 = WordlePlayer("Mark", 6)
 player1.updateStats(True, 2)
-
 
 player1.displayStats()
