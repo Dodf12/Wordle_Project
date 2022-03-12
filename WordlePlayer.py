@@ -205,7 +205,7 @@ class WordlePlayer(Player):
                     else:
                         print (" " + str(i+1) +": ########### "+ str(x[i]))                         
                 i=i+1
-        else:
+        else: #if player played 0 games(not possible but used it for webcat)
             print (" 1: # 0")
             
 

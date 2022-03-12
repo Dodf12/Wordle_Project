@@ -1,3 +1,4 @@
+#NEIL AND ABHINAV WORDLE PROJECT
 import random
 import string
 import math
@@ -8,7 +9,7 @@ from wordleword import WordleWord
 from wordleplayer import WordlePlayer
 from fancyword import FancyWord
 from rule import rules
-from ranks import Ranks
+from ranks import Ranks 
 
 
 # testing github
@@ -33,7 +34,7 @@ from ranks import Ranks
 
 def markGuess(word, guess, alphabet, hardmode):
     
-    if (hardmode == False):
+    if (hardmode == False): #normal mode is colored here(as yellow must be there)
         g = guess.getWord()
         w = word 
         a = alphabet.getWord()
@@ -44,7 +45,7 @@ def markGuess(word, guess, alphabet, hardmode):
                     guess.setCorrect(idx)
 
                     alphaidx= alphabet.getWord().find(guess.getWord()[idx]) #gets word from alphabet object and finds the character at position idx
-                    if alphabet.colorAt(alphaidx) != "gray":            #makes sure word is not gray before coloring green
+                    if alphabet.colorAt(alphaidx) != "gray":            #makes sure word is not gray before coloring green(conflicts occur otherwise)
                         alphabet.setCorrect(alphaidx)
             
                         break
@@ -59,6 +60,8 @@ def markGuess(word, guess, alphabet, hardmode):
                     alphaidx1= alphabet.getWord().find(guess.getWord()[idx])
                     if ((alphabet.colorAt(alphaidx1) != "green") and (alphabet.colorAt(alphaidx1) != "yellow")): #makes sure not green or yellow before passing
                         alphabet.setNotUsed(alphaidx1)
+    
+    #coloring for hard mode(no yellow)
     else:
         g = guess.getWord()
         w = word 
@@ -85,7 +88,7 @@ def playRound(player, words, all_words, settings, hardmode):
     
     ranWord = words.getRandom() #getting random word
     print(ranWord)
-    alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz")
+    alphaObj = WordleWord("abcdefghijklmnopqrstuvwxyz") #alphabet object
     i = 0 #loop variable
     guessObjList = []
     while i < 6:
@@ -104,9 +107,9 @@ def playRound(player, words, all_words, settings, hardmode):
         print("\n")
 
 
-        if player_guess == ranWord: #goes here if players's guess is green
-            i = i + 1
-            markGuess(ranWord, player_guess_obj, alphaObj, hardmode)
+        if player_guess == ranWord: #goes here if players's guess complety matches string-wise(doesn't color yet)
+            i = i + 1 #this if checks if the player guess string is == to the ranword
+            markGuess(ranWord, player_guess_obj, alphaObj, hardmode) #colors it al green
 
             indexval = 0
             for p in guessObjList:               #making sure it prints all the previous guesses     
@@ -125,13 +128,13 @@ def playRound(player, words, all_words, settings, hardmode):
             print("Trophies: " + str(player_rank.get_score())) 
             print("Rank: " + player_rank.get_rank())
             return #in order to exit out of function
-        else:
+        else: #goes here if word doesn't match
                                            
-                markGuess(ranWord, player_guess_obj, alphaObj, hardmode)
-                indexval = 0
+                markGuess(ranWord, player_guess_obj, alphaObj, hardmode) 
+                indexval = 0#for numbering guess
 
                 for p in guessObjList:                   
-                    indexval = indexval + 1
+                    indexval = indexval + 1 
                     print(indexval,":",p,"\n")
 
                 print(" Alphabet ",alphaObj,"\n")
@@ -160,15 +163,12 @@ def playWordle():
 
   
 
-    #-NOTE-This is the intro sequence that we created as a little easter egg
-
+    
+    #167-191 is intro code block
     print("Let's play the game of Wordle!!")
     name = input("Enter your name: ")
-
     ready_to_play = input("Welcome " + name + " Do you wish to play? (y/n) or would you like to know the rules first: ") #part 1 of intro, welcoming
     if ready_to_play == "y":
-    #askss user a one time decision of going to hardmode or not
-
         print("Loading You In To The Game . . .")
         print("")
         print("Ok, you may begin. Please enter your first guess into the following line")
@@ -176,7 +176,7 @@ def playWordle():
     elif ready_to_play == "n":
         print("Exiting You Out Of The Game . . .")
         return
-    elif ready_to_play == "r":
+    elif ready_to_play == "r": #player can request for rules
         rules()
     else:    
          new_attempt = ""
@@ -196,6 +196,8 @@ def playWordle():
     player_list = []
     player_list = player_list + [player]
 
+    #asks player if they would like to play in hardmode or normal mode
+    #NOTE-Player cannot revert back, unless program is completely killed
     hardmode = input("Would you like to activate hard mode?(y/n) There is no turning back from here ") 
     if hardmode == "n":
         playRound(player_list, five_letter_words, all_words, settings, False)    
@@ -203,7 +205,7 @@ def playWordle():
         # start playing rounds of Wordle
         playRound(player_list, five_letter_words, all_words, settings, True)
     else:
-        while (hardmode!= "y" and hardmode != "n" and hardmode != "r"):        
+        while (hardmode!= "y" and hardmode != "n" and hardmode != "r"):   #checking if input is not y, n or r
             hardmode = input("That is not a valid input, please try again!: ")
         if hardmode == "n":
             playRound(player_list, five_letter_words, all_words, settings, False)    

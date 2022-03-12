@@ -1,7 +1,6 @@
 
-from wordleword import WordleWord
-
-def rules():
+#provides the rules to the game and can only be accesed in intro sequence
+def rules(): #outputs the rules if player types in h
     print("")
     print("Hi! Welcome to wordle")
     print("Wordle is a game where you must guess a five letter word")

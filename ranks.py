@@ -1,5 +1,5 @@
 class Ranks:
-    def __init__(self, won):
+    def __init__(self, won): #establishing if won or not and establishing trophies
         self.won = won
         self.tries = 0
         self.trophies = 0
@@ -29,7 +29,7 @@ class Ranks:
             self.rank = "P.E.K.K.A"
         elif self.trophies>1300:
             self.rank = "God"
-    def trophies_update(self, tries, hardmode):
+    def trophies_update(self, tries, hardmode): #adds trophies based on in how many attempts they get the word in
         self.tries = tries
 
         if hardmode == False:
